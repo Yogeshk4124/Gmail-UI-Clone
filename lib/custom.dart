@@ -23,25 +23,28 @@ class _customState extends State<custom> with SingleTickerProviderStateMixin {
   late List<mail> mails = [];
   var rng = new Random();
 
-  void fetchImage(int i) async {
-    var response = await http.get(Uri.parse('https://randomuser.me/api/'));
+  void fetchImage() async {
+    var response =
+        await http.get(Uri.parse('https://randomuser.me/api/?results=10'));
     try {
       var json = jsonDecode(response.body);
-      var link = json['results'][0]['picture']['large'];
-      print(i.toString() + " " + link);
-      mails.add(
-        new mail(
-            content: "New Login to Cloud We noticed some unusual",
-            date: "26,Jan 2020",
-            subject: "Cloud Login",
-            username: "Google",
-            senderMail: "google@google.com",
-            time: "12:23 am",
-            profile: link.toString(),
-            read: rng.nextInt(2) == 1 ? true : false),
-      );
+      var link;
+      for (int i = 0; i < 10; i++) {
+        link = json['results'][i]['picture']['large'];
+        mails.add(
+          new mail(
+              content: "New Login to Cloud We noticed some unusual",
+              date: "26 Jan 2020",
+              subject: "Cloud Login",
+              username: "Google",
+              senderMail: "google@google.com",
+              time: "12:23 am",
+              profile: link.toString(),
+              read: rng.nextInt(2) == 1 ? true : false),
+        );
+      }
     } catch (e) {
-      print("error " + i.toString() + ":" + e.toString());
+      print("error " + ":" + e.toString());
     }
     setState(() {});
   }
@@ -53,18 +56,55 @@ class _customState extends State<custom> with SingleTickerProviderStateMixin {
     super.initState();
     _animationController =
         AnimationController(duration: Duration(milliseconds: 450), vsync: this);
-    for (int i = 0; i < 10; i++) fetchImage(i);
+    fetchImage();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {},
+        label: Text("Compose"),
+      ),
+
+      // FloatingActionButton(
+      //   onPressed: () {},
+      //   child: Text('Compose'),
+      // ),
       drawer: Drawer(
-        child: Container(
-          width: 100,
-          height: 100,
-          color: Colors.red,
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.all(0.0),
+              padding: EdgeInsets.all(0.0),
+              height: 100,
+              child: DrawerHeader(
+                decoration: BoxDecoration(
+                    color: Colors.black, shape: BoxShape.rectangle),
+                child: Text(
+                  'Drawer Header',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+            ListTile(
+              title: Text('Item 1'),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+            ListTile(
+              title: Text('Item 2'),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -132,12 +172,13 @@ class _customState extends State<custom> with SingleTickerProviderStateMixin {
                         // width: 200,
                         child: Text("Search in emails"),
                       ),
-                      IconButton(
-                        icon: Icon(
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 8, horizontal: 10),
+                        child: Icon(
                           Icons.circle,
                           color: Colors.grey,
                         ),
-                        onPressed: () => {},
                       ),
                     ],
                   ),
@@ -180,13 +221,25 @@ class _customState extends State<custom> with SingleTickerProviderStateMixin {
                         foregroundColor: Colors.white,
                         radius: 20,
                       ),
-                      title: Text(
-                        mails[i].getUsername().toString(),
-                        style: TextStyle(
-                          fontWeight: mails[i].read
-                              ? FontWeight.normal
-                              : FontWeight.bold,
-                        ),
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            mails[i].getUsername().toString(),
+                            style: TextStyle(
+                              fontWeight: mails[i].read
+                                  ? FontWeight.normal
+                                  : FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            mails[i].getDate().toString().substring(0, 6),
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold),
+                          )
+                        ],
                       ),
                       subtitle: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -194,18 +247,33 @@ class _customState extends State<custom> with SingleTickerProviderStateMixin {
                         children: [
                           Text(
                             mails[i].getSubject().toString(),
+                            overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                                 fontWeight: mails[i].read
                                     ? FontWeight.normal
                                     : FontWeight.bold,
                                 color: Colors.black),
                           ),
-                          Text(
-                            mails[i]
-                                .getContent()
-                                .toString()
-                                .replaceAll("\n", " "),
-                            overflow: TextOverflow.clip,
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  mails[i]
+                                      .getContent()
+                                      .toString()
+                                      .replaceAll("\n", " "),
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(fontSize: 14),
+                                ),
+                              ),
+                              Icon(
+                                Icons.star_border,
+                                color: Colors.grey,
+                                size: 22,
+                              ),
+                            ],
                           )
                         ],
                       ),
