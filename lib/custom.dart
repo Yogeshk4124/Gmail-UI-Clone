@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:gmail/View/helper.dart';
+import 'package:http/http.dart' as http;
 
 import 'models/mail.dart';
 
@@ -16,23 +19,33 @@ class _customState extends State<custom> with SingleTickerProviderStateMixin {
   TextEditingController searchController = new TextEditingController();
   SlidableController _slidableController = new SlidableController();
   late mail m;
-  late List<mail> mails;
+  late List<mail> mails = [];
+
+  void fetchImage() async {
+    var response = await http.get(Uri.parse('https://randomuser.me/api/'));
+    var json = jsonDecode(response.body);
+    var link = json['results'][0]['picture']['large'];
+    mails.add(
+      new mail(
+        content: "New Login to Cloud We noticed some unusual",
+        date: "26,Jan 2020",
+        subject: "Cloud Login",
+        username: "Google",
+        senderMail: "google@google.com",
+        time: "12:23 am",
+        profile: link,
+      ),
+    );
+    setState(() {});
+  }
+
+  List items = ["1", "1", "1", "1", "1", "1"];
   @override
   void initState() {
     super.initState();
     _animationController =
         AnimationController(duration: Duration(milliseconds: 450), vsync: this);
-
-    m = new mail(
-      content: "New Login to Cloud We noticed some unusual",
-      date: "26,Jan 2020",
-      subject: "Cloud Login",
-      username: "Google",
-      senderMail: "google@google.com",
-      time: "12:23 am",
-      profile: 
-    );
-    mails = [m, m, m, m, m, m];
+    for (int i = 0; i < 10; i++) fetchImage();
   }
 
   void _handleOnPressed() {
@@ -43,8 +56,6 @@ class _customState extends State<custom> with SingleTickerProviderStateMixin {
           : _animationController.reverse();
     });
   }
-
-  List items = ['1', '2', '3', '4', '5', '6'];
 
   @override
   Widget build(BuildContext context) {

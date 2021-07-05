@@ -5,7 +5,6 @@ import 'package:gmail/models/mail.dart';
 
 Widget getSlidable(mail m, context, i) {
   SlidableController _slidableController = new SlidableController();
-  print(m.content);
   return Slidable(
     key: UniqueKey(),
     controller: _slidableController,
@@ -23,11 +22,11 @@ Widget getSlidable(mail m, context, i) {
     child: ListTile(
       leading: CircleAvatar(
         backgroundColor: Colors.indigoAccent,
-        child: Text(m.username.toString()[0]),
+        child: Image.network(m.profile.toString()),
         foregroundColor: Colors.white,
+        radius: 20,
       ),
       title: Text(m.getUsername().toString()),
-      // subtitle: Text(m.getSubject().toString()),
       subtitle: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,

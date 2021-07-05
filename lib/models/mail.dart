@@ -7,7 +7,7 @@ class mail {
   String? time;
   String? date;
   String? senderMail;
-  Image? profile;
+  String? profile;
   mail({
     @required this.username,
     @required this.profile,
@@ -24,5 +24,5 @@ class mail {
   String? getTime() => time;
   String? getDate() => date;
   String? getSenderMail() => senderMail;
-  Image? getProfile() => profile;
+  String? getProfile() => profile;
 }
