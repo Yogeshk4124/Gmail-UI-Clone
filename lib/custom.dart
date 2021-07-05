@@ -1,9 +1,9 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:gmail/View/helper.dart';
 import 'package:http/http.dart' as http;
 
 import 'models/mail.dart';
@@ -14,52 +14,59 @@ class custom extends StatefulWidget {
 }
 
 class _customState extends State<custom> with SingleTickerProviderStateMixin {
+  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   late AnimationController _animationController;
   bool isPlaying = false;
   TextEditingController searchController = new TextEditingController();
   SlidableController _slidableController = new SlidableController();
   late mail m;
   late List<mail> mails = [];
+  var rng = new Random();
 
-  void fetchImage() async {
+  void fetchImage(int i) async {
     var response = await http.get(Uri.parse('https://randomuser.me/api/'));
-    var json = jsonDecode(response.body);
-    var link = json['results'][0]['picture']['large'];
-    mails.add(
-      new mail(
-        content: "New Login to Cloud We noticed some unusual",
-        date: "26,Jan 2020",
-        subject: "Cloud Login",
-        username: "Google",
-        senderMail: "google@google.com",
-        time: "12:23 am",
-        profile: link,
-      ),
-    );
+    try {
+      var json = jsonDecode(response.body);
+      var link = json['results'][0]['picture']['large'];
+      print(i.toString() + " " + link);
+      mails.add(
+        new mail(
+            content: "New Login to Cloud We noticed some unusual",
+            date: "26,Jan 2020",
+            subject: "Cloud Login",
+            username: "Google",
+            senderMail: "google@google.com",
+            time: "12:23 am",
+            profile: link.toString(),
+            read: rng.nextInt(2) == 1 ? true : false),
+      );
+    } catch (e) {
+      print("error " + i.toString() + ":" + e.toString());
+    }
     setState(() {});
   }
 
   List items = ["1", "1", "1", "1", "1", "1"];
+
   @override
   void initState() {
     super.initState();
     _animationController =
         AnimationController(duration: Duration(milliseconds: 450), vsync: this);
-    for (int i = 0; i < 10; i++) fetchImage();
-  }
-
-  void _handleOnPressed() {
-    setState(() {
-      isPlaying = !isPlaying;
-      isPlaying
-          ? _animationController.forward()
-          : _animationController.reverse();
-    });
+    for (int i = 0; i < 10; i++) fetchImage(i);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: Drawer(
+        child: Container(
+          width: 100,
+          height: 100,
+          color: Colors.red,
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.red,
         items: [
@@ -114,12 +121,11 @@ class _customState extends State<custom> with SingleTickerProviderStateMixin {
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
                               vertical: 8, horizontal: 10),
-                          child: AnimatedIcon(
-                            icon: AnimatedIcons.close_menu,
-                            progress: _animationController,
+                          child: Icon(
+                            Icons.menu,
                           ),
                         ),
-                        onTap: () => _handleOnPressed(),
+                        onTap: () => _scaffoldKey.currentState!.openDrawer(),
                       ),
                       Expanded(
                         // padding: EdgeInsets.all(15),
@@ -153,7 +159,6 @@ class _customState extends State<custom> with SingleTickerProviderStateMixin {
               child: ListView.builder(
                 itemCount: mails.length,
                 itemBuilder: (context, i) {
-                  return getSlidable(mails[i], context, i);
                   return Slidable(
                     key: UniqueKey(),
                     controller: _slidableController,
@@ -161,11 +166,8 @@ class _customState extends State<custom> with SingleTickerProviderStateMixin {
                     dismissal: SlidableDismissal(
                       child: SlidableDrawerDismissal(),
                       onDismissed: (actionType) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('clicked4')),
-                        );
                         setState(() {
-                          items.removeAt(i);
+                          mails.removeAt(i);
                         });
                       },
                     ),
@@ -173,49 +175,65 @@ class _customState extends State<custom> with SingleTickerProviderStateMixin {
                     actionExtentRatio: 0.20,
                     child: ListTile(
                       leading: CircleAvatar(
-                        backgroundColor: Colors.indigoAccent,
-                        child: Text(items[i]),
+                        backgroundImage:
+                            NetworkImage(mails[i].profile.toString()),
                         foregroundColor: Colors.white,
+                        radius: 20,
                       ),
-                      title: Text(items[i]),
-                      subtitle: Text('SlidableDrawerDelegate'),
+                      title: Text(
+                        mails[i].getUsername().toString(),
+                        style: TextStyle(
+                          fontWeight: mails[i].read
+                              ? FontWeight.normal
+                              : FontWeight.bold,
+                        ),
+                      ),
+                      subtitle: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            mails[i].getSubject().toString(),
+                            style: TextStyle(
+                                fontWeight: mails[i].read
+                                    ? FontWeight.normal
+                                    : FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                          Text(
+                            mails[i]
+                                .getContent()
+                                .toString()
+                                .replaceAll("\n", " "),
+                            overflow: TextOverflow.clip,
+                          )
+                        ],
+                      ),
+                      isThreeLine: true,
                     ),
                     actions: <Widget>[
                       IconSlideAction(
-                        caption: 'Archive',
-                        color: Colors.blue,
-                        icon: Icons.archive,
-                        onTap: () => ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('clicked1')),
-                        ),
-                      ),
-                      IconSlideAction(
-                        caption: 'Share',
-                        color: Colors.indigo,
-                        icon: Icons.share,
-                        onTap: () => ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('clicked2')),
-                        ),
-                      ),
+                          caption: 'Archive',
+                          color: Colors.red,
+                          icon: Icons.archive,
+                          onTap: () {
+                            mails.removeAt(i);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Archived')),
+                            );
+                          }),
                     ],
                     secondaryActions: <Widget>[
                       IconSlideAction(
-                        caption: 'More',
-                        color: Colors.grey.shade200,
-                        icon: Icons.more_horiz,
-                        onTap: () => ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('clicked3')),
-                        ),
-                        closeOnTap: false,
-                      ),
-                      IconSlideAction(
-                        caption: 'Delete',
-                        color: Colors.red,
-                        icon: Icons.delete,
-                        onTap: () => ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('clicked4')),
-                        ),
-                      ),
+                          caption: 'Archive',
+                          color: Colors.red,
+                          icon: Icons.archive,
+                          onTap: () {
+                            mails.removeAt(i);
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Archived')),
+                            );
+                          }),
                     ],
                   );
                 },

@@ -8,6 +8,7 @@ class mail {
   String? date;
   String? senderMail;
   String? profile;
+  bool read;
   mail({
     @required this.username,
     @required this.profile,
@@ -16,6 +17,7 @@ class mail {
     @required this.content,
     @required this.time,
     @required this.date,
+    this.read = false,
   });
 
   String? getUsername() => username;
@@ -25,4 +27,5 @@ class mail {
   String? getDate() => date;
   String? getSenderMail() => senderMail;
   String? getProfile() => profile;
+  bool getRead() => read;
 }
