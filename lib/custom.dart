@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:http/http.dart' as http;
 
+import 'FAB/fabCollapsed.dart';
+import 'FAB/fabExtended.dart';
 import 'models/mail.dart';
 
 class custom extends StatefulWidget {
@@ -21,7 +23,8 @@ class _customState extends State<custom> with SingleTickerProviderStateMixin {
   SlidableController _slidableController = new SlidableController();
   late mail m;
   late List<mail> mails = [];
-  var rng = new Random();
+  ScrollController _scrollController = new ScrollController();
+  bool isFAB = false;
 
   void fetchImage() async {
     var response =
@@ -40,7 +43,7 @@ class _customState extends State<custom> with SingleTickerProviderStateMixin {
               senderMail: "google@google.com",
               time: "12:23 am",
               profile: link.toString(),
-              read: rng.nextInt(2) == 1 ? true : false),
+              read: Random().nextInt(2) == 1 ? true : false),
         );
       }
     } catch (e) {
@@ -57,21 +60,32 @@ class _customState extends State<custom> with SingleTickerProviderStateMixin {
     _animationController =
         AnimationController(duration: Duration(milliseconds: 450), vsync: this);
     fetchImage();
+    _scrollController.addListener(() {
+      if (_scrollController.offset > 50) {
+        setState(() {
+          isFAB = true;
+        });
+      } else {
+        setState(() {
+          isFAB = false;
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _animationController.dispose();
+    searchController.dispose();
+    _scrollController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
-        label: Text("Compose"),
-      ),
-
-      // FloatingActionButton(
-      //   onPressed: () {},
-      //   child: Text('Compose'),
-      // ),
+      floatingActionButton: isFAB ? buildCollapsedFAB() : buildExtendedFAB(),
       drawer: Drawer(
         child: ListView(
           // Important: Remove any padding from the ListView.
@@ -199,6 +213,7 @@ class _customState extends State<custom> with SingleTickerProviderStateMixin {
             Expanded(
               child: ListView.builder(
                 itemCount: mails.length,
+                controller: _scrollController,
                 itemBuilder: (context, i) {
                   return Slidable(
                     key: UniqueKey(),
