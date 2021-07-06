@@ -21,8 +21,7 @@ class _customState extends State<custom> with SingleTickerProviderStateMixin {
   bool isPlaying = false;
   TextEditingController searchController = new TextEditingController();
   SlidableController _slidableController = new SlidableController();
-  late mail m;
-  late List<mail> mails = [];
+  List<mail> mails = [];
   ScrollController _scrollController = new ScrollController();
   bool isFAB = false;
 
