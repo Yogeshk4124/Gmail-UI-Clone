@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gmail/Pages/MailPage.dart';
 
 import 'Pages/Compose.dart';
 import 'Pages/HomePage.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => HomePage(),
         '/compose': (context) => Compose(),
+        MailPage.routeName: (context) => MailPage(),
       },
     );
   }

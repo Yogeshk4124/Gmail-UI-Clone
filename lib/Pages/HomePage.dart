@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:gmail/Pages/MailPage.dart';
 import 'package:http/http.dart' as http;
 
 import '../FAB/fabCollapsed.dart';
@@ -229,6 +230,10 @@ class _HomePageState extends State<HomePage>
                     actionPane: SlidableScrollActionPane(),
                     actionExtentRatio: 0.20,
                     child: ListTile(
+                      onTap: () {
+                        Navigator.pushNamed(context, MailPage.routeName,
+                            arguments: mails[i]);
+                      },
                       leading: CircleAvatar(
                         backgroundImage:
                             NetworkImage(mails[i].profile.toString()),
