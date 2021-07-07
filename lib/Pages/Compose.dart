@@ -13,6 +13,8 @@ class _ComposeState extends State<Compose> {
   TextEditingController receiverController = new TextEditingController();
   TextEditingController subjectController = new TextEditingController();
   TextEditingController msgController = new TextEditingController();
+  TextEditingController ccController = new TextEditingController();
+  TextEditingController bccController = new TextEditingController();
   final List<String> option = [
     "email1@gmail.com",
     "email2@gmail.com",
@@ -22,7 +24,7 @@ class _ComposeState extends State<Compose> {
     "email6@gmail.com"
   ];
   late String selected;
-
+  bool isVisible = false;
   @override
   void initState() {
     super.initState();
@@ -36,6 +38,8 @@ class _ComposeState extends State<Compose> {
     receiverController.dispose();
     subjectController.dispose();
     msgController.dispose();
+    ccController.dispose();
+    bccController.dispose();
   }
 
   @override
@@ -43,7 +47,7 @@ class _ComposeState extends State<Compose> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          margin: const EdgeInsets.only(left: 10.0, right: 10, top: 15),
+          margin: const EdgeInsets.only(left: 12.0, right: 12, top: 15),
           child: Column(
             children: [
               Row(
@@ -109,7 +113,7 @@ class _ComposeState extends State<Compose> {
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
                           color: Colors.black.withOpacity(0.6),
-                          fontSize: 18),
+                          fontSize: 17),
                     ),
                   ),
                   Expanded(
@@ -156,17 +160,101 @@ class _ComposeState extends State<Compose> {
                   prefixIcon: Container(
                     width: 1,
                     alignment: Alignment.centerLeft,
-                    // padding: EdgeInsets.only(right: 1),
                     child: Text(
                       "To",
                       style: TextStyle(
                           color: Colors.black.withOpacity(0.6),
                           fontWeight: FontWeight.w400,
-                          fontSize: 18),
+                          fontSize: 17),
                     ),
                   ),
                   border: InputBorder.none,
-                  suffixIcon: Icon(Icons.keyboard_arrow_down),
+                  suffixIcon: Visibility(
+                    maintainSize: true,
+                    maintainAnimation: true,
+                    maintainState: true,
+                    visible: !isVisible,
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(
+                          () {
+                            isVisible = true;
+                          },
+                        );
+                      },
+                      child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Icon(Icons.keyboard_arrow_down)),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                color: Colors.grey[500],
+                height: .5,
+              ),
+              Visibility(
+                visible: isVisible,
+                child: TextField(
+                  textAlignVertical: TextAlignVertical.top,
+                  controller: ccController,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 18,
+                  ),
+                  decoration: InputDecoration(
+                    prefixIcon: Container(
+                      width: 1,
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Cc",
+                        style: TextStyle(
+                            color: Colors.black.withOpacity(0.6),
+                            fontWeight: FontWeight.w400,
+                            fontSize: 17),
+                      ),
+                    ),
+                    border: InputBorder.none,
+                  ),
+                ),
+              ),
+              Visibility(
+                visible: isVisible,
+                child: Container(
+                  color: Colors.grey[500],
+                  height: .5,
+                ),
+              ),
+              Visibility(
+                visible: isVisible,
+                child: TextField(
+                  textAlignVertical: TextAlignVertical.top,
+                  controller: bccController,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 18,
+                  ),
+                  decoration: InputDecoration(
+                    prefixIcon: Container(
+                      width: 1,
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Bcc",
+                        style: TextStyle(
+                            color: Colors.black.withOpacity(0.6),
+                            fontWeight: FontWeight.w400,
+                            fontSize: 17),
+                      ),
+                    ),
+                    border: InputBorder.none,
+                  ),
+                ),
+              ),
+              Visibility(
+                visible: isVisible,
+                child: Container(
+                  color: Colors.grey[500],
+                  height: .5,
                 ),
               ),
               TextField(
@@ -189,6 +277,9 @@ class _ComposeState extends State<Compose> {
                   keyboardType: TextInputType.multiline,
                   controller: msgController,
                   expands: true,
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
                   decoration: InputDecoration(hintText: "Compose email"),
                 ),
               ),
