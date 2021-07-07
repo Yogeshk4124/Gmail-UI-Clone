@@ -6,16 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:http/http.dart' as http;
 
-import 'FAB/fabCollapsed.dart';
-import 'FAB/fabExtended.dart';
-import 'models/mail.dart';
+import '../FAB/fabCollapsed.dart';
+import '../FAB/fabExtended.dart';
+import '../models/mail.dart';
 
-class custom extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  _customState createState() => _customState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _customState extends State<custom> with SingleTickerProviderStateMixin {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   late AnimationController _animationController;
   bool isPlaying = false;
@@ -51,8 +52,6 @@ class _customState extends State<custom> with SingleTickerProviderStateMixin {
     setState(() {});
   }
 
-  List items = ["1", "1", "1", "1", "1", "1"];
-
   @override
   void initState() {
     super.initState();
@@ -84,7 +83,8 @@ class _customState extends State<custom> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      floatingActionButton: isFAB ? buildCollapsedFAB() : buildExtendedFAB(),
+      floatingActionButton:
+          isFAB ? buildCollapsedFAB(context) : buildExtendedFAB(context),
       drawer: Drawer(
         child: ListView(
           // Important: Remove any padding from the ListView.

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'custom.dart';
+import 'Pages/Compose.dart';
+import 'Pages/HomePage.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +16,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: custom(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => HomePage(),
+        '/compose': (context) => Compose(),
+      },
     );
   }
 }
