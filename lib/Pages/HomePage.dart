@@ -40,10 +40,12 @@ class _HomePageState extends State<HomePage>
               content: "New Login to Cloud We noticed some unusual",
               date: "26 Jan 2020",
               subject: "Cloud Login",
-              username: "Google",
+              senderName:
+                  "New Login to Cloud We noticed some unusual" + "Google",
               senderMail: "google@google.com",
               time: "12:23 am",
               profile: link.toString(),
+              receiverMails: ["mymail@gmail.com"],
               read: Random().nextInt(2) == 1 ? true : false),
         );
       }
@@ -243,20 +245,27 @@ class _HomePageState extends State<HomePage>
                       title: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            mails[i].getUsername().toString(),
-                            style: TextStyle(
-                              fontWeight: mails[i].read
-                                  ? FontWeight.normal
-                                  : FontWeight.bold,
+                          Expanded(
+                            flex: 6,
+                            child: Text(
+                              mails[i].getUsername().toString(),
+                              style: TextStyle(
+                                fontWeight: mails[i].read
+                                    ? FontWeight.normal
+                                    : FontWeight.bold,
+                              ),
+                              overflow: TextOverflow.ellipsis,
                             ),
                           ),
-                          Text(
-                            mails[i].getDate().toString().substring(0, 6),
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 13,
-                                fontWeight: FontWeight.bold),
+                          Expanded(
+                            flex: 1,
+                            child: Text(
+                              mails[i].getDate().toString().substring(0, 6),
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.bold),
+                            ),
                           )
                         ],
                       ),

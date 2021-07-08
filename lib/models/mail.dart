@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 class mail {
-  String? username;
+  String? senderName;
   String? subject;
   String? content;
   String? time;
@@ -9,18 +9,20 @@ class mail {
   String? senderMail;
   String? profile;
   bool read;
+  List<String>? receiverMails;
   mail({
-    @required this.username,
+    @required this.senderName,
     @required this.profile,
     @required this.senderMail,
     @required this.subject,
     @required this.content,
     @required this.time,
     @required this.date,
+    @required this.receiverMails,
     this.read = false,
   });
 
-  String? getUsername() => username;
+  String? getUsername() => senderName;
   String? getSubject() => subject;
   String? getContent() => content;
   String? getTime() => time;
