@@ -45,64 +45,105 @@ class _ComposeState extends State<Compose> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.black87,
+            size: 25,
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        title: Text(
+          "Compose",
+          style: GoogleFonts.poppins(color: Colors.black),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.attachment,
+              color: Colors.black.withOpacity(0.7),
+              size: 22,
+            ),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.send,
+              color: Colors.black.withOpacity(0.7),
+              size: 22,
+            ),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.more_vert,
+              color: Colors.black.withOpacity(0.7),
+              size: 22,
+            ),
+          )
+        ],
+      ),
       body: SafeArea(
         child: Container(
           margin: const EdgeInsets.only(left: 12.0, right: 12, top: 15),
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Icon(
-                      Icons.arrow_back,
-                      color: Colors.black87,
-                      size: 25,
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.only(left: 20),
-                      child: Text(
-                        'Compose',
-                        style: GoogleFonts.poppins(
-                            color: Colors.black, fontSize: 22),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(left: 20),
-                    child: Icon(
-                      Icons.attachment,
-                      color: Colors.black.withOpacity(0.7),
-                      size: 24,
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(left: 20),
-                    child: Icon(
-                      Icons.send,
-                      color: Colors.black.withOpacity(0.7),
-                      size: 24,
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(left: 10),
-                    child: Icon(
-                      Icons.more_vert,
-                      color: Colors.black.withOpacity(0.7),
-                      size: 24,
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 12,
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //   crossAxisAlignment: CrossAxisAlignment.center,
+              //   children: [
+              //     GestureDetector(
+              //       onTap: () {
+              //         Navigator.of(context).pop();
+              //       },
+              //       child: Icon(
+              //         Icons.arrow_back,
+              //         color: Colors.black87,
+              //         size: 25,
+              //       ),
+              //     ),
+              //     Expanded(
+              //       child: Container(
+              //         padding: EdgeInsets.only(left: 20),
+              //         child: Text(
+              //           'Compose',
+              //           style: GoogleFonts.poppins(
+              //               color: Colors.black, fontSize: 22),
+              //         ),
+              //       ),
+              //     ),
+              //     Container(
+              //       padding: EdgeInsets.only(left: 20),
+              //       child: Icon(
+              //         Icons.attachment,
+              //         color: Colors.black.withOpacity(0.7),
+              //         size: 24,
+              //       ),
+              //     ),
+              //     Container(
+              //       padding: EdgeInsets.only(left: 20),
+              //       child: Icon(
+              //         Icons.send,
+              //         color: Colors.black.withOpacity(0.7),
+              //         size: 24,
+              //       ),
+              //     ),
+              //     Container(
+              //       padding: EdgeInsets.only(left: 10),
+              //       child: Icon(
+              //         Icons.more_vert,
+              //         color: Colors.black.withOpacity(0.7),
+              //         size: 24,
+              //       ),
+              //     )
+              //   ],
+              // ),
               Row(
                 children: [
                   Container(

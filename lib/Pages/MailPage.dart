@@ -59,8 +59,51 @@ class _MailPageState extends State<MailPage> {
         ],
       ),
       body: SafeArea(
-        child: Column(
-          children: [Text(args.subject.toString())],
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    args.subject.toString(),
+                    style: TextStyle(fontSize: 24),
+                  ),
+                  Icon(Icons.star_outline),
+                ],
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    child: Text('S'),
+                    width: 45,
+                    height: 45,
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(50),
+                      ),
+                    ),
+                    // width: 100,
+                    // height: 100,
+                  ),
+                  Column(
+                    children: [
+                      Text(''),
+                      Row(
+                        children: [Text(''), Icon(Icons.add)],
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
