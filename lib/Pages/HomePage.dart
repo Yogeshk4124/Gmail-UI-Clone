@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage>
   List<mail> mails = [];
   ScrollController _scrollController = new ScrollController();
   bool isFAB = false;
-
+  int currentSelected = 1;
   void fetchImage() async {
     var response =
         await http.get(Uri.parse('https://randomuser.me/api/?results=10'));
@@ -89,38 +89,148 @@ class _HomePageState extends State<HomePage>
       floatingActionButton:
           isFAB ? buildCollapsedFAB(context) : buildExtendedFAB(context),
       drawer: Drawer(
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.all(0.0),
-              padding: EdgeInsets.all(0.0),
-              height: 100,
-              child: DrawerHeader(
-                decoration: BoxDecoration(
-                    color: Colors.black, shape: BoxShape.rectangle),
-                child: Text(
-                  'Drawer Header',
-                  style: TextStyle(color: Colors.white),
+        child: Container(
+          color: Colors.white,
+          child: ListView(
+            // Important: Remove any padding from the ListView.
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              Container(
+                margin: EdgeInsets.all(0.0),
+                padding: EdgeInsets.all(0.0),
+                height: 100,
+                child: DrawerHeader(
+                  decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      shape: BoxShape.rectangle,
+                      border: Border(
+                          bottom: BorderSide(
+                              color: Colors.grey.shade500, width: .2))),
+                  child: Text(
+                    'Gmail',
+                    style: TextStyle(color: Colors.red, fontSize: 24),
+                  ),
                 ),
               ),
-            ),
-            ListTile(
-              title: Text('Item 1'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
-            ),
-            ListTile(
-              title: Text('Item 2'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
-            ),
-          ],
+              // ListTile(
+              //   title: Row(
+              //     children: [
+              //       Icon(Icons.inbox),
+              //       SizedBox(
+              //         width: 20,
+              //       ),
+              //       Text('Item 1'),
+              //    ],
+              //   ),
+              //   onTap: () {
+              //     // Update the state of the app.
+              //     // ...
+              //   },
+              // ),
+              Container(
+                height: 45,
+                margin: EdgeInsets.only(right: 40),
+                color: Colors.white,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(100),
+                      bottomRight: Radius.circular(100)),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                      onPrimary: Colors.blue,
+                      onSurface: Colors.black,
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        Icon(Icons.inbox),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'Item 1',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                height: 45,
+                margin: EdgeInsets.only(right: 40),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(100),
+                      bottomRight: Radius.circular(100)),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        Icon(Icons.inbox),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'Item 1',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                height: 45,
+                margin: EdgeInsets.only(right: 40),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(100),
+                      bottomRight: Radius.circular(100)),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        Icon(Icons.inbox),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'Item 1',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                height: 45,
+                margin: EdgeInsets.only(right: 40),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(100),
+                      bottomRight: Radius.circular(100)),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        Icon(Icons.inbox),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'Item 1',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
