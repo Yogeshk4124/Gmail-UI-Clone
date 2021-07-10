@@ -1,3 +1,4 @@
+import 'package:animated_icon_button/animated_icon_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gmail/CustomWidgets/CustomIconButton.dart';
@@ -14,11 +15,30 @@ class _MailPageState extends State<MailPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   bool isVis = false;
+  bool isPlaying = false;
+
   @override
   void initState() {
     super.initState();
     _animationController =
         AnimationController(duration: Duration(milliseconds: 450), vsync: this);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _animationController.dispose();
+  }
+
+  toggleIcon() {
+    setState(() {
+      isPlaying = !isPlaying;
+      if (isPlaying)
+        _animationController.forward();
+      else
+        _animationController.reverse();
+    });
   }
 
   @override
@@ -130,8 +150,7 @@ class _MailPageState extends State<MailPage>
                                 flex: 12,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Row(
                                       mainAxisAlignment:
@@ -158,31 +177,74 @@ class _MailPageState extends State<MailPage>
                                         ),
                                       ],
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          msg.receiverMails?.length == 1
-                                              ? "to me"
-                                              : "",
-                                          style: TextStyle(
-                                              color: Colors.grey,
-                                              fontWeight: FontWeight.w600),
-                                          textAlign: TextAlign.start,
-                                        ),
-                                        IconButton(
-                                          onPressed: () {
-                                            setState(() {
-                                              isVis = !isVis;
-                                            });
-                                          },
-                                          icon: AnimatedIcon(
-                                            icon: AnimatedIcons.view_list,
-                                            progress: _animationController,
+                                    GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          isVis = !isVis;
+                                          toggleIcon();
+                                        });
+                                      },
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            msg.receiverMails?.length == 1
+                                                ? "to me"
+                                                : "",
+                                            style: TextStyle(
+                                                color: Colors.grey,
+                                                fontWeight: FontWeight.w600),
+                                            textAlign: TextAlign.start,
                                           ),
-                                        ),
-                                      ],
+                                          // Icon(
+                                          //   Icons.forward,
+                                          //
+                                          // ),
+                                          AnimatedIconButton(
+                                            padding: EdgeInsets.all(0),
+                                            constraints: BoxConstraints(
+                                              maxHeight: 15,
+                                              maxWidth: 15,
+                                              minHeight: 15,
+                                              minWidth: 15,
+                                            ),
+                                            size: 15,
+                                            hoverColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            disabledColor: Colors.transparent,
+                                            splashColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            alignment: Alignment.topLeft,
+                                            onPressed: () {
+                                              setState(() {
+                                                isVis = !isVis;
+                                                // toggleIcon();
+                                              });
+                                            },
+                                            animationController:
+                                                _animationController,
+                                            icons: [
+                                              AnimatedIconItem(
+                                                icon: Icon(
+                                                  Icons.keyboard_arrow_down,
+                                                  color: Colors.grey,
+                                                  size: 15,
+                                                ),
+                                              ),
+                                              AnimatedIconItem(
+                                                icon: Icon(
+                                                  Icons.keyboard_arrow_up,
+                                                  color: Colors.grey,
+                                                  size: 15,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -198,19 +260,122 @@ class _MailPageState extends State<MailPage>
                             visible: isVis,
                             child: Container(
                               decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey),
-                              ),
+                                  border:
+                                      Border.all(color: Colors.grey.shade400),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(8))),
+                              padding: EdgeInsets.all(8),
+                              margin: EdgeInsets.symmetric(vertical: 12),
                               child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
                                   Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
-                                      Text("From:"),
-                                      Text("Sender"),
+                                      Expanded(flex: 1, child: Text("From:")),
+                                      Expanded(
+                                        flex: 2,
+                                        child: Text(
+                                          msg.senderName.toString(),
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ),
+                                      Container(
+                                        margin:
+                                            EdgeInsets.symmetric(horizontal: 5),
+                                        child: Icon(
+                                          Icons.circle,
+                                          size: 6,
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                      Expanded(
+                                          flex: 4,
+                                          child:
+                                              Text(msg.senderMail.toString())),
                                       // Text()
                                     ],
                                   ),
-                                  Text("ds"),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Expanded(flex: 1, child: Text("To:")),
+                                      Expanded(
+                                        flex: 6,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            for (var i in msg.receiverMails!)
+                                              Text(i)
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 14,
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Expanded(flex: 1, child: Text("Date:")),
+                                      Expanded(
+                                        flex: 6,
+                                        child: Text(msg.date.toString() +
+                                            ", " +
+                                            msg.time.toString()),
+                                      ),
+                                      SizedBox(
+                                        width: 14,
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        flex: 1,
+                                        child: Container(
+                                          alignment: Alignment.centerLeft,
+                                          child: Icon(
+                                            Icons.lock_outline,
+                                          ),
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 6,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text('Standard encryption(TLS).'),
+                                            Text('See security details.'),
+                                          ],
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 14,
+                                      ),
+                                    ],
+                                  ),
                                 ],
                               ),
                             ),
