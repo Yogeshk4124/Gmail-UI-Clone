@@ -99,7 +99,7 @@ class _HomePageState extends State<HomePage>
               Container(
                 margin: EdgeInsets.all(0.0),
                 padding: EdgeInsets.all(0.0),
-                height: 100,
+                height: 90,
                 child: DrawerHeader(
                   decoration: BoxDecoration(
                       color: Colors.transparent,
@@ -109,13 +109,18 @@ class _HomePageState extends State<HomePage>
                               color: Colors.grey.shade500, width: .2))),
                   child: Text(
                     'Gmail',
-                    style: TextStyle(color: Colors.red, fontSize: 24),
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontSize: 22,
+                      fontWeight: FontWeight.normal,
+                      fontFamily: 'ProductSans',
+                    ),
                   ),
                 ),
               ),
               Container(
                 height: 45,
-                margin: EdgeInsets.only(right: 40),
+                margin: EdgeInsets.only(right: 10),
                 color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
@@ -125,11 +130,17 @@ class _HomePageState extends State<HomePage>
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      primary: Colors.white,
-                      onPrimary: Colors.black,
-                      onSurface: Colors.black,
+                      primary: currentSelected == 1
+                          ? Colors.red.shade100
+                          : Colors.white,
+                      onPrimary:
+                          currentSelected == 1 ? Colors.red : Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        currentSelected = 1;
+                      });
+                    },
                     child: Row(
                       children: [
                         Icon(Icons.all_inbox),
@@ -138,7 +149,12 @@ class _HomePageState extends State<HomePage>
                         ),
                         Text(
                           'All inboxes',
-                          style: TextStyle(fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                              color: currentSelected == 1
+                                  ? Colors.red
+                                  : Colors.black87,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ProductSans'),
                         ),
                       ],
                     ),
@@ -148,7 +164,7 @@ class _HomePageState extends State<HomePage>
               Divider(),
               Container(
                 height: 45,
-                margin: EdgeInsets.only(right: 40),
+                margin: EdgeInsets.only(right: 10),
                 color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
@@ -158,11 +174,17 @@ class _HomePageState extends State<HomePage>
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      primary: Colors.white,
-                      onPrimary: Colors.black,
-                      onSurface: Colors.black,
+                      primary: currentSelected == 2
+                          ? Colors.red.shade100
+                          : Colors.white,
+                      onPrimary:
+                          currentSelected == 2 ? Colors.red : Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        currentSelected = 2;
+                      });
+                    },
                     child: Row(
                       children: [
                         Icon(Icons.inbox),
@@ -171,7 +193,12 @@ class _HomePageState extends State<HomePage>
                         ),
                         Text(
                           'Primary',
-                          style: TextStyle(fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                              color: currentSelected == 2
+                                  ? Colors.red
+                                  : Colors.black87,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ProductSans'),
                         ),
                       ],
                     ),
@@ -180,7 +207,7 @@ class _HomePageState extends State<HomePage>
               ),
               Container(
                 height: 45,
-                margin: EdgeInsets.only(right: 40),
+                margin: EdgeInsets.only(right: 10),
                 color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
@@ -190,11 +217,17 @@ class _HomePageState extends State<HomePage>
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      primary: Colors.white,
-                      onPrimary: Colors.black,
-                      onSurface: Colors.black,
+                      primary: currentSelected == 3
+                          ? Colors.blue.shade100
+                          : Colors.white,
+                      onPrimary:
+                          currentSelected == 3 ? Colors.blue : Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        currentSelected = 3;
+                      });
+                    },
                     child: Row(
                       children: [
                         Icon(Icons.people_alt_outlined),
@@ -203,7 +236,12 @@ class _HomePageState extends State<HomePage>
                         ),
                         Text(
                           'Social',
-                          style: TextStyle(fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                              color: currentSelected == 3
+                                  ? Colors.blue
+                                  : Colors.black87,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ProductSans'),
                         ),
                       ],
                     ),
@@ -212,7 +250,7 @@ class _HomePageState extends State<HomePage>
               ),
               Container(
                 height: 45,
-                margin: EdgeInsets.only(right: 40),
+                margin: EdgeInsets.only(right: 10),
                 color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
@@ -222,11 +260,17 @@ class _HomePageState extends State<HomePage>
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      primary: Colors.white,
-                      onPrimary: Colors.black,
-                      onSurface: Colors.black,
+                      primary: currentSelected == 4
+                          ? Colors.green.shade100
+                          : Colors.white,
+                      onPrimary:
+                          currentSelected == 4 ? Colors.green : Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        currentSelected = 4;
+                      });
+                    },
                     child: Row(
                       children: [
                         Icon(Icons.local_offer_outlined),
@@ -235,7 +279,12 @@ class _HomePageState extends State<HomePage>
                         ),
                         Text(
                           'Promotions',
-                          style: TextStyle(fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                              color: currentSelected == 4
+                                  ? Colors.green
+                                  : Colors.black87,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ProductSans'),
                         ),
                       ],
                     ),
@@ -249,12 +298,13 @@ class _HomePageState extends State<HomePage>
                   style: TextStyle(
                       fontSize: 12,
                       color: Colors.black.withOpacity(.84),
-                      fontWeight: FontWeight.w500),
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'ProductSans'),
                 ),
               ),
               Container(
                 height: 45,
-                margin: EdgeInsets.only(right: 40),
+                margin: EdgeInsets.only(right: 10),
                 color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
@@ -264,11 +314,16 @@ class _HomePageState extends State<HomePage>
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      primary: Colors.white,
+                      primary: currentSelected == 5
+                          ? Colors.grey.shade300
+                          : Colors.white,
                       onPrimary: Colors.black,
-                      onSurface: Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        currentSelected = 5;
+                      });
+                    },
                     child: Row(
                       children: [
                         Icon(Icons.star_outline),
@@ -277,7 +332,10 @@ class _HomePageState extends State<HomePage>
                         ),
                         Text(
                           'Starred',
-                          style: TextStyle(fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                              color: Colors.black87,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ProductSans'),
                         ),
                       ],
                     ),
@@ -286,7 +344,7 @@ class _HomePageState extends State<HomePage>
               ),
               Container(
                 height: 45,
-                margin: EdgeInsets.only(right: 40),
+                margin: EdgeInsets.only(right: 10),
                 color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
@@ -296,11 +354,16 @@ class _HomePageState extends State<HomePage>
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      primary: Colors.white,
+                      primary: currentSelected == 6
+                          ? Colors.grey.shade300
+                          : Colors.white,
                       onPrimary: Colors.black,
-                      onSurface: Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        currentSelected = 6;
+                      });
+                    },
                     child: Row(
                       children: [
                         Icon(Icons.access_time),
@@ -309,7 +372,10 @@ class _HomePageState extends State<HomePage>
                         ),
                         Text(
                           'Snoozed',
-                          style: TextStyle(fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                              color: Colors.black87,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ProductSans'),
                         ),
                       ],
                     ),
@@ -318,7 +384,7 @@ class _HomePageState extends State<HomePage>
               ),
               Container(
                 height: 45,
-                margin: EdgeInsets.only(right: 40),
+                margin: EdgeInsets.only(right: 10),
                 color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
@@ -328,11 +394,16 @@ class _HomePageState extends State<HomePage>
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      primary: Colors.white,
+                      primary: currentSelected == 7
+                          ? Colors.grey.shade300
+                          : Colors.white,
                       onPrimary: Colors.black,
-                      onSurface: Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        currentSelected = 7;
+                      });
+                    },
                     child: Row(
                       children: [
                         Icon(Icons.label_important_outline),
@@ -341,7 +412,10 @@ class _HomePageState extends State<HomePage>
                         ),
                         Text(
                           'Important',
-                          style: TextStyle(fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                              color: Colors.black87,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ProductSans'),
                         ),
                       ],
                     ),
@@ -350,7 +424,7 @@ class _HomePageState extends State<HomePage>
               ),
               Container(
                 height: 45,
-                margin: EdgeInsets.only(right: 40),
+                margin: EdgeInsets.only(right: 10),
                 color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
@@ -360,11 +434,16 @@ class _HomePageState extends State<HomePage>
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      primary: Colors.white,
+                      primary: currentSelected == 8
+                          ? Colors.grey.shade300
+                          : Colors.white,
                       onPrimary: Colors.black,
-                      onSurface: Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        currentSelected = 8;
+                      });
+                    },
                     child: Row(
                       children: [
                         Icon(Icons.send),
@@ -373,7 +452,10 @@ class _HomePageState extends State<HomePage>
                         ),
                         Text(
                           'Sent',
-                          style: TextStyle(fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                              color: Colors.black87,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ProductSans'),
                         ),
                       ],
                     ),
@@ -382,7 +464,7 @@ class _HomePageState extends State<HomePage>
               ),
               Container(
                 height: 45,
-                margin: EdgeInsets.only(right: 40),
+                margin: EdgeInsets.only(right: 10),
                 color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
@@ -392,11 +474,16 @@ class _HomePageState extends State<HomePage>
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      primary: Colors.white,
+                      primary: currentSelected == 9
+                          ? Colors.grey.shade300
+                          : Colors.white,
                       onPrimary: Colors.black,
-                      onSurface: Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        currentSelected = 9;
+                      });
+                    },
                     child: Row(
                       children: [
                         Icon(Icons.schedule_send_outlined),
@@ -405,7 +492,10 @@ class _HomePageState extends State<HomePage>
                         ),
                         Text(
                           'Scheduled',
-                          style: TextStyle(fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                              color: Colors.black87,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ProductSans'),
                         ),
                       ],
                     ),
@@ -414,7 +504,7 @@ class _HomePageState extends State<HomePage>
               ),
               Container(
                 height: 45,
-                margin: EdgeInsets.only(right: 40),
+                margin: EdgeInsets.only(right: 10),
                 color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
@@ -424,11 +514,16 @@ class _HomePageState extends State<HomePage>
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      primary: Colors.white,
+                      primary: currentSelected == 10
+                          ? Colors.grey.shade300
+                          : Colors.white,
                       onPrimary: Colors.black,
-                      onSurface: Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        currentSelected = 10;
+                      });
+                    },
                     child: Row(
                       children: [
                         Icon(Icons.outbox),
@@ -437,7 +532,10 @@ class _HomePageState extends State<HomePage>
                         ),
                         Text(
                           'Outbox',
-                          style: TextStyle(fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                              color: Colors.black87,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ProductSans'),
                         ),
                       ],
                     ),
@@ -446,7 +544,7 @@ class _HomePageState extends State<HomePage>
               ),
               Container(
                 height: 45,
-                margin: EdgeInsets.only(right: 40),
+                margin: EdgeInsets.only(right: 10),
                 color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
@@ -456,11 +554,16 @@ class _HomePageState extends State<HomePage>
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      primary: Colors.white,
+                      primary: currentSelected == 11
+                          ? Colors.grey.shade300
+                          : Colors.white,
                       onPrimary: Colors.black,
-                      onSurface: Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        currentSelected = 11;
+                      });
+                    },
                     child: Row(
                       children: [
                         Icon(Icons.insert_drive_file_outlined),
@@ -469,7 +572,10 @@ class _HomePageState extends State<HomePage>
                         ),
                         Text(
                           'Drafts',
-                          style: TextStyle(fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                              color: Colors.black87,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ProductSans'),
                         ),
                       ],
                     ),
@@ -478,7 +584,7 @@ class _HomePageState extends State<HomePage>
               ),
               Container(
                 height: 45,
-                margin: EdgeInsets.only(right: 40),
+                margin: EdgeInsets.only(right: 10),
                 color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
@@ -488,11 +594,16 @@ class _HomePageState extends State<HomePage>
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      primary: Colors.white,
+                      primary: currentSelected == 12
+                          ? Colors.grey.shade300
+                          : Colors.white,
                       onPrimary: Colors.black,
-                      onSurface: Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        currentSelected = 12;
+                      });
+                    },
                     child: Row(
                       children: [
                         Icon(Icons.mail_outline),
@@ -501,7 +612,10 @@ class _HomePageState extends State<HomePage>
                         ),
                         Text(
                           'All mail',
-                          style: TextStyle(fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                              color: Colors.black87,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ProductSans'),
                         ),
                       ],
                     ),
@@ -510,7 +624,7 @@ class _HomePageState extends State<HomePage>
               ),
               Container(
                 height: 45,
-                margin: EdgeInsets.only(right: 40),
+                margin: EdgeInsets.only(right: 10),
                 color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
@@ -520,11 +634,16 @@ class _HomePageState extends State<HomePage>
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      primary: Colors.white,
+                      primary: currentSelected == 13
+                          ? Colors.grey.shade300
+                          : Colors.white,
                       onPrimary: Colors.black,
-                      onSurface: Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        currentSelected = 13;
+                      });
+                    },
                     child: Row(
                       children: [
                         Icon(Icons.report_gmailerrorred_outlined),
@@ -533,7 +652,10 @@ class _HomePageState extends State<HomePage>
                         ),
                         Text(
                           'Spam',
-                          style: TextStyle(fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                              color: Colors.black87,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ProductSans'),
                         ),
                       ],
                     ),
@@ -542,7 +664,7 @@ class _HomePageState extends State<HomePage>
               ),
               Container(
                 height: 45,
-                margin: EdgeInsets.only(right: 40),
+                margin: EdgeInsets.only(right: 10),
                 color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
@@ -552,11 +674,16 @@ class _HomePageState extends State<HomePage>
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      primary: Colors.white,
+                      primary: currentSelected == 14
+                          ? Colors.grey.shade300
+                          : Colors.white,
                       onPrimary: Colors.black,
-                      onSurface: Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        currentSelected = 14;
+                      });
+                    },
                     child: Row(
                       children: [
                         Icon(CupertinoIcons.delete),
@@ -565,7 +692,10 @@ class _HomePageState extends State<HomePage>
                         ),
                         Text(
                           'Bin',
-                          style: TextStyle(fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                              color: Colors.black87,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ProductSans'),
                         ),
                       ],
                     ),
@@ -579,12 +709,13 @@ class _HomePageState extends State<HomePage>
                   style: TextStyle(
                       fontSize: 12,
                       color: Colors.black.withOpacity(.84),
-                      fontWeight: FontWeight.w500),
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'ProductSans'),
                 ),
               ),
               Container(
                 height: 45,
-                margin: EdgeInsets.only(right: 40),
+                margin: EdgeInsets.only(right: 10),
                 color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
@@ -594,11 +725,16 @@ class _HomePageState extends State<HomePage>
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      primary: Colors.white,
+                      primary: currentSelected == 15
+                          ? Colors.grey.shade300
+                          : Colors.white,
                       onPrimary: Colors.black,
-                      onSurface: Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        currentSelected = 15;
+                      });
+                    },
                     child: Row(
                       children: [
                         Icon(Icons.calendar_today),
@@ -607,7 +743,10 @@ class _HomePageState extends State<HomePage>
                         ),
                         Text(
                           'Calendar',
-                          style: TextStyle(fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                              color: Colors.black87,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ProductSans'),
                         ),
                       ],
                     ),
@@ -616,7 +755,7 @@ class _HomePageState extends State<HomePage>
               ),
               Container(
                 height: 45,
-                margin: EdgeInsets.only(right: 40),
+                margin: EdgeInsets.only(right: 10),
                 color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
@@ -626,11 +765,16 @@ class _HomePageState extends State<HomePage>
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      primary: Colors.white,
+                      primary: currentSelected == 16
+                          ? Colors.grey.shade300
+                          : Colors.white,
                       onPrimary: Colors.black,
-                      onSurface: Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        currentSelected = 16;
+                      });
+                    },
                     child: Row(
                       children: [
                         Icon(Icons.account_circle_outlined),
@@ -639,7 +783,10 @@ class _HomePageState extends State<HomePage>
                         ),
                         Text(
                           'Contacts',
-                          style: TextStyle(fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                              color: Colors.black87,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ProductSans'),
                         ),
                       ],
                     ),
@@ -649,7 +796,7 @@ class _HomePageState extends State<HomePage>
               Divider(),
               Container(
                 height: 45,
-                margin: EdgeInsets.only(right: 40),
+                margin: EdgeInsets.only(right: 10),
                 color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
@@ -659,11 +806,16 @@ class _HomePageState extends State<HomePage>
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      primary: Colors.white,
+                      primary: currentSelected == 17
+                          ? Colors.grey.shade300
+                          : Colors.white,
                       onPrimary: Colors.black,
-                      onSurface: Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        currentSelected = 17;
+                      });
+                    },
                     child: Row(
                       children: [
                         Icon(Icons.settings_outlined),
@@ -672,7 +824,10 @@ class _HomePageState extends State<HomePage>
                         ),
                         Text(
                           'Settings',
-                          style: TextStyle(fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                              color: Colors.black87,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ProductSans'),
                         ),
                       ],
                     ),
@@ -681,7 +836,7 @@ class _HomePageState extends State<HomePage>
               ),
               Container(
                 height: 45,
-                margin: EdgeInsets.only(right: 40),
+                margin: EdgeInsets.only(right: 10),
                 color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
@@ -691,11 +846,16 @@ class _HomePageState extends State<HomePage>
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
-                      primary: Colors.white,
+                      primary: currentSelected == 18
+                          ? Colors.grey.shade300
+                          : Colors.white,
                       onPrimary: Colors.black,
-                      onSurface: Colors.black,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        currentSelected = 18;
+                      });
+                    },
                     child: Row(
                       children: [
                         Icon(Icons.help_outline_outlined),
@@ -704,7 +864,10 @@ class _HomePageState extends State<HomePage>
                         ),
                         Text(
                           'Help and feedback',
-                          style: TextStyle(fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                              color: Colors.black87,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'ProductSans'),
                         ),
                       ],
                     ),
@@ -748,7 +911,7 @@ class _HomePageState extends State<HomePage>
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey,
+                      color: Colors.grey.shade100,
                       offset: Offset(0.0, 1.0), //(x,y)
                       blurRadius: 2.0,
                     ),
@@ -776,18 +939,15 @@ class _HomePageState extends State<HomePage>
                         onTap: () => _scaffoldKey.currentState!.openDrawer(),
                       ),
                       Expanded(
-                        // padding: EdgeInsets.all(15),
-                        // width: 200,
                         child: Text("Search in emails"),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 8, horizontal: 10),
-                        child: Icon(
-                          Icons.circle,
-                          color: Colors.grey,
-                        ),
-                      ),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 8, horizontal: 10),
+                          child: CircleAvatar(
+                            radius: 14,
+                            child: Text("S"),
+                          )),
                     ],
                   ),
                 ),
