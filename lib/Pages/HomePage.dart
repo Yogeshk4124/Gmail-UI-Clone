@@ -27,6 +27,7 @@ class _HomePageState extends State<HomePage>
   ScrollController _scrollController = new ScrollController();
   bool isFAB = false;
   int currentSelected = 1;
+
   void fetchImage() async {
     var response =
         await http.get(Uri.parse('https://randomuser.me/api/?results=10'));
@@ -112,33 +113,53 @@ class _HomePageState extends State<HomePage>
                   ),
                 ),
               ),
-              // ListTile(
-              //   title: Row(
-              //     children: [
-              //       Icon(Icons.inbox),
-              //       SizedBox(
-              //         width: 20,
-              //       ),
-              //       Text('Item 1'),
-              //    ],
-              //   ),
-              //   onTap: () {
-              //     // Update the state of the app.
-              //     // ...
-              //   },
-              // ),
               Container(
                 height: 45,
                 margin: EdgeInsets.only(right: 40),
                 color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(100),
-                      bottomRight: Radius.circular(100)),
+                    topRight: Radius.circular(100),
+                    bottomRight: Radius.circular(100),
+                  ),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
+                      elevation: 0,
                       primary: Colors.white,
-                      onPrimary: Colors.blue,
+                      onPrimary: Colors.black,
+                      onSurface: Colors.black,
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        Icon(Icons.all_inbox),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'All inboxes',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Divider(),
+              Container(
+                height: 45,
+                margin: EdgeInsets.only(right: 40),
+                color: Colors.white,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(100),
+                    bottomRight: Radius.circular(100),
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      primary: Colors.white,
+                      onPrimary: Colors.black,
                       onSurface: Colors.black,
                     ),
                     onPressed: () {},
@@ -149,7 +170,7 @@ class _HomePageState extends State<HomePage>
                           width: 20,
                         ),
                         Text(
-                          'Item 1',
+                          'Primary',
                           style: TextStyle(fontWeight: FontWeight.w500),
                         ),
                       ],
@@ -160,20 +181,28 @@ class _HomePageState extends State<HomePage>
               Container(
                 height: 45,
                 margin: EdgeInsets.only(right: 40),
+                color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(100),
-                      bottomRight: Radius.circular(100)),
+                    topRight: Radius.circular(100),
+                    bottomRight: Radius.circular(100),
+                  ),
                   child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      primary: Colors.white,
+                      onPrimary: Colors.black,
+                      onSurface: Colors.black,
+                    ),
                     onPressed: () {},
                     child: Row(
                       children: [
-                        Icon(Icons.inbox),
+                        Icon(Icons.people_alt_outlined),
                         SizedBox(
                           width: 20,
                         ),
                         Text(
-                          'Item 1',
+                          'Social',
                           style: TextStyle(fontWeight: FontWeight.w500),
                         ),
                       ],
@@ -184,20 +213,70 @@ class _HomePageState extends State<HomePage>
               Container(
                 height: 45,
                 margin: EdgeInsets.only(right: 40),
+                color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(100),
-                      bottomRight: Radius.circular(100)),
+                    topRight: Radius.circular(100),
+                    bottomRight: Radius.circular(100),
+                  ),
                   child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      primary: Colors.white,
+                      onPrimary: Colors.black,
+                      onSurface: Colors.black,
+                    ),
                     onPressed: () {},
                     child: Row(
                       children: [
-                        Icon(Icons.inbox),
+                        Icon(Icons.local_offer_outlined),
                         SizedBox(
                           width: 20,
                         ),
                         Text(
-                          'Item 1',
+                          'Promotions',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 18, top: 18, bottom: 12),
+                child: Text(
+                  'ALL LABELS',
+                  style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.black.withOpacity(.84),
+                      fontWeight: FontWeight.w500),
+                ),
+              ),
+              Container(
+                height: 45,
+                margin: EdgeInsets.only(right: 40),
+                color: Colors.white,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(100),
+                    bottomRight: Radius.circular(100),
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      primary: Colors.white,
+                      onPrimary: Colors.black,
+                      onSurface: Colors.black,
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        Icon(Icons.star_outline),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'Starred',
                           style: TextStyle(fontWeight: FontWeight.w500),
                         ),
                       ],
@@ -208,20 +287,423 @@ class _HomePageState extends State<HomePage>
               Container(
                 height: 45,
                 margin: EdgeInsets.only(right: 40),
+                color: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(100),
-                      bottomRight: Radius.circular(100)),
+                    topRight: Radius.circular(100),
+                    bottomRight: Radius.circular(100),
+                  ),
                   child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      primary: Colors.white,
+                      onPrimary: Colors.black,
+                      onSurface: Colors.black,
+                    ),
                     onPressed: () {},
                     child: Row(
                       children: [
-                        Icon(Icons.inbox),
+                        Icon(Icons.access_time),
                         SizedBox(
                           width: 20,
                         ),
                         Text(
-                          'Item 1',
+                          'Snoozed',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                height: 45,
+                margin: EdgeInsets.only(right: 40),
+                color: Colors.white,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(100),
+                    bottomRight: Radius.circular(100),
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      primary: Colors.white,
+                      onPrimary: Colors.black,
+                      onSurface: Colors.black,
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        Icon(Icons.label_important_outline),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'Important',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                height: 45,
+                margin: EdgeInsets.only(right: 40),
+                color: Colors.white,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(100),
+                    bottomRight: Radius.circular(100),
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      primary: Colors.white,
+                      onPrimary: Colors.black,
+                      onSurface: Colors.black,
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        Icon(Icons.send),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'Sent',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                height: 45,
+                margin: EdgeInsets.only(right: 40),
+                color: Colors.white,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(100),
+                    bottomRight: Radius.circular(100),
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      primary: Colors.white,
+                      onPrimary: Colors.black,
+                      onSurface: Colors.black,
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        Icon(Icons.schedule_send_outlined),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'Scheduled',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                height: 45,
+                margin: EdgeInsets.only(right: 40),
+                color: Colors.white,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(100),
+                    bottomRight: Radius.circular(100),
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      primary: Colors.white,
+                      onPrimary: Colors.black,
+                      onSurface: Colors.black,
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        Icon(Icons.outbox),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'Outbox',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                height: 45,
+                margin: EdgeInsets.only(right: 40),
+                color: Colors.white,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(100),
+                    bottomRight: Radius.circular(100),
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      primary: Colors.white,
+                      onPrimary: Colors.black,
+                      onSurface: Colors.black,
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        Icon(Icons.insert_drive_file_outlined),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'Drafts',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                height: 45,
+                margin: EdgeInsets.only(right: 40),
+                color: Colors.white,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(100),
+                    bottomRight: Radius.circular(100),
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      primary: Colors.white,
+                      onPrimary: Colors.black,
+                      onSurface: Colors.black,
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        Icon(Icons.mail_outline),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'All mail',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                height: 45,
+                margin: EdgeInsets.only(right: 40),
+                color: Colors.white,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(100),
+                    bottomRight: Radius.circular(100),
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      primary: Colors.white,
+                      onPrimary: Colors.black,
+                      onSurface: Colors.black,
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        Icon(Icons.report_gmailerrorred_outlined),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'Spam',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                height: 45,
+                margin: EdgeInsets.only(right: 40),
+                color: Colors.white,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(100),
+                    bottomRight: Radius.circular(100),
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      primary: Colors.white,
+                      onPrimary: Colors.black,
+                      onSurface: Colors.black,
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        Icon(CupertinoIcons.delete),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'Bin',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 18, top: 18, bottom: 12),
+                child: Text(
+                  'GOOGLE APPS',
+                  style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.black.withOpacity(.84),
+                      fontWeight: FontWeight.w500),
+                ),
+              ),
+              Container(
+                height: 45,
+                margin: EdgeInsets.only(right: 40),
+                color: Colors.white,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(100),
+                    bottomRight: Radius.circular(100),
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      primary: Colors.white,
+                      onPrimary: Colors.black,
+                      onSurface: Colors.black,
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        Icon(Icons.calendar_today),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'Calendar',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                height: 45,
+                margin: EdgeInsets.only(right: 40),
+                color: Colors.white,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(100),
+                    bottomRight: Radius.circular(100),
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      primary: Colors.white,
+                      onPrimary: Colors.black,
+                      onSurface: Colors.black,
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        Icon(Icons.account_circle_outlined),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'Contacts',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Divider(),
+              Container(
+                height: 45,
+                margin: EdgeInsets.only(right: 40),
+                color: Colors.white,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(100),
+                    bottomRight: Radius.circular(100),
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      primary: Colors.white,
+                      onPrimary: Colors.black,
+                      onSurface: Colors.black,
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        Icon(Icons.settings_outlined),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'Settings',
+                          style: TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                height: 45,
+                margin: EdgeInsets.only(right: 40),
+                color: Colors.white,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(100),
+                    bottomRight: Radius.circular(100),
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      primary: Colors.white,
+                      onPrimary: Colors.black,
+                      onSurface: Colors.black,
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        Icon(Icons.help_outline_outlined),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        Text(
+                          'Help and feedback',
                           style: TextStyle(fontWeight: FontWeight.w500),
                         ),
                       ],
