@@ -32,6 +32,9 @@ dependencies:
   http: ^0.13.3
   google_fonts: ^2.1.0
   animated_icon_button: ^1.0.2
+  provider: ^5.0.0
+  shared_preferences: ^2.0.6
+
 
 
 #  floating_search_bar: ^0.3.0

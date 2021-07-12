@@ -3,6 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gmail/CustomWidgets/CustomIconButton.dart';
 import 'package:gmail/models/mail.dart';
+import 'package:gmail/styles.dart';
+import 'package:provider/provider.dart';
+
+import '../DarkTheme.dart';
 
 class MailPage extends StatefulWidget {
   static const routeName = '/extractArguments';
@@ -43,6 +47,8 @@ class _MailPageState extends State<MailPage>
 
   @override
   Widget build(BuildContext context) {
+    final themeChange = Provider.of<DarkThemeProvider>(context);
+
     final msg = ModalRoute.of(context)!.settings.arguments as mail;
     List<String> text = ["Reply", "Reply All", "Forward"];
     List<IconData> icons = [
@@ -52,6 +58,8 @@ class _MailPageState extends State<MailPage>
     ];
 
     return Scaffold(
+      backgroundColor:
+          Styles.themeData(themeChange.darkTheme, context).backgroundColor,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -61,36 +69,55 @@ class _MailPageState extends State<MailPage>
           },
           icon: Icon(
             Icons.arrow_back,
-            color: Colors.black,
+            color: Styles.themeData(themeChange.darkTheme, context).accentColor,
           ),
         ),
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.archive_outlined,
-              color: Colors.black,
+          GestureDetector(
+            onTap: () {},
+            child: Container(
+              child: Icon(
+                Icons.archive_outlined,
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .accentColor,
+                size: 24,
+              ),
             ),
           ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              CupertinoIcons.delete,
-              color: Colors.black,
+          GestureDetector(
+            onTap: () {},
+            child: Container(
+              padding: EdgeInsets.only(left: 18),
+              child: Icon(
+                CupertinoIcons.delete,
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .accentColor,
+                size: 24,
+              ),
             ),
           ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.mail_outline_outlined,
-              color: Colors.black,
+          GestureDetector(
+            onTap: () {},
+            child: Container(
+              padding: EdgeInsets.only(left: 18),
+              child: Icon(
+                Icons.mail_outline_outlined,
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .accentColor,
+                size: 24,
+              ),
             ),
           ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.more_vert,
-              color: Colors.black,
+          GestureDetector(
+            onTap: () {},
+            child: Container(
+              padding: EdgeInsets.only(left: 18, right: 10),
+              child: Icon(
+                Icons.more_vert,
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .accentColor,
+                size: 24,
+              ),
             ),
           ),
         ],
@@ -104,7 +131,7 @@ class _MailPageState extends State<MailPage>
                 minHeight: MediaQuery.of(context).size.height * 0.85),
             child: IntrinsicHeight(
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: EdgeInsets.symmetric(horizontal: 15),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   mainAxisSize: MainAxisSize.max,
@@ -162,7 +189,7 @@ class _MailPageState extends State<MailPage>
                                             msg.senderName.toString(),
                                             overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
-                                                fontWeight: FontWeight.w500,
+                                                fontWeight: FontWeight.bold,
                                                 fontSize: 16),
                                           ),
                                         ),
@@ -251,8 +278,10 @@ class _MailPageState extends State<MailPage>
                               ),
                               Expanded(
                                   flex: 2,
-                                  child:
-                                      Icon(CupertinoIcons.arrow_turn_up_left)),
+                                  child: Icon(
+                                    CupertinoIcons.arrow_turn_up_left,
+                                    color: Colors.grey.shade900,
+                                  )),
                               Expanded(flex: 2, child: Icon(Icons.more_vert)),
                             ],
                           ),
@@ -386,6 +415,12 @@ class _MailPageState extends State<MailPage>
                             child: Text(
                               msg.content.toString(),
                               textAlign: TextAlign.justify,
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Styles.themeData(
+                                          themeChange.darkTheme, context)
+                                      .textSelectionColor,
+                                  fontWeight: FontWeight.normal),
                             ),
                           ),
                         ],

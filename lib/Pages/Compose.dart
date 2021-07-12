@@ -25,6 +25,7 @@ class _ComposeState extends State<Compose> {
   ];
   late String selected;
   bool isVisible = false;
+
   @override
   void initState() {
     super.initState();
@@ -63,30 +64,39 @@ class _ComposeState extends State<Compose> {
           style: GoogleFonts.poppins(color: Colors.black),
         ),
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.attachment,
-              color: Colors.black.withOpacity(0.7),
-              size: 22,
+          GestureDetector(
+            onTap: () {},
+            child: Container(
+              padding: EdgeInsets.only(left: 18),
+              child: Icon(
+                Icons.attachment,
+                color: Colors.black.withOpacity(0.7),
+                size: 22,
+              ),
             ),
           ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.send,
-              color: Colors.black.withOpacity(0.7),
-              size: 22,
+          GestureDetector(
+            onTap: () {},
+            child: Container(
+              padding: EdgeInsets.only(left: 18),
+              child: Icon(
+                Icons.send,
+                color: Colors.black.withOpacity(0.7),
+                size: 22,
+              ),
             ),
           ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.more_vert,
-              color: Colors.black.withOpacity(0.7),
-              size: 22,
+          GestureDetector(
+            onTap: () {},
+            child: Container(
+              padding: EdgeInsets.only(left: 15, right: 10),
+              child: Icon(
+                Icons.more_vert,
+                color: Colors.black.withOpacity(0.7),
+                size: 22,
+              ),
             ),
-          )
+          ),
         ],
       ),
       body: SafeArea(
@@ -94,56 +104,6 @@ class _ComposeState extends State<Compose> {
           margin: const EdgeInsets.only(left: 12.0, right: 12, top: 15),
           child: Column(
             children: [
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //   crossAxisAlignment: CrossAxisAlignment.center,
-              //   children: [
-              //     GestureDetector(
-              //       onTap: () {
-              //         Navigator.of(context).pop();
-              //       },
-              //       child: Icon(
-              //         Icons.arrow_back,
-              //         color: Colors.black87,
-              //         size: 25,
-              //       ),
-              //     ),
-              //     Expanded(
-              //       child: Container(
-              //         padding: EdgeInsets.only(left: 20),
-              //         child: Text(
-              //           'Compose',
-              //           style: GoogleFonts.poppins(
-              //               color: Colors.black, fontSize: 22),
-              //         ),
-              //       ),
-              //     ),
-              //     Container(
-              //       padding: EdgeInsets.only(left: 20),
-              //       child: Icon(
-              //         Icons.attachment,
-              //         color: Colors.black.withOpacity(0.7),
-              //         size: 24,
-              //       ),
-              //     ),
-              //     Container(
-              //       padding: EdgeInsets.only(left: 20),
-              //       child: Icon(
-              //         Icons.send,
-              //         color: Colors.black.withOpacity(0.7),
-              //         size: 24,
-              //       ),
-              //     ),
-              //     Container(
-              //       padding: EdgeInsets.only(left: 10),
-              //       child: Icon(
-              //         Icons.more_vert,
-              //         color: Colors.black.withOpacity(0.7),
-              //         size: 24,
-              //       ),
-              //     )
-              //   ],
-              // ),
               Row(
                 children: [
                   Container(
@@ -187,7 +147,7 @@ class _ComposeState extends State<Compose> {
                 ],
               ),
               Container(
-                color: Colors.grey[500],
+                color: Colors.grey.shade400,
                 height: .5,
               ),
               TextField(
@@ -224,14 +184,18 @@ class _ComposeState extends State<Compose> {
                         );
                       },
                       child: Align(
-                          alignment: Alignment.centerRight,
-                          child: Icon(Icons.keyboard_arrow_down)),
+                        alignment: Alignment.centerRight,
+                        child: Icon(
+                          Icons.keyboard_arrow_down,
+                          color: Colors.black.withOpacity(0.6),
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
               Container(
-                color: Colors.grey[500],
+                color: Colors.grey.shade400,
                 height: .5,
               ),
               Visibility(
@@ -262,7 +226,7 @@ class _ComposeState extends State<Compose> {
               Visibility(
                 visible: isVisible,
                 child: Container(
-                  color: Colors.grey[500],
+                  color: Colors.grey.shade400,
                   height: .5,
                 ),
               ),
@@ -294,7 +258,7 @@ class _ComposeState extends State<Compose> {
               Visibility(
                 visible: isVisible,
                 child: Container(
-                  color: Colors.grey[500],
+                  color: Colors.grey.shade400,
                   height: .5,
                 ),
               ),
@@ -309,7 +273,7 @@ class _ComposeState extends State<Compose> {
                     border: InputBorder.none, hintText: "Subject"),
               ),
               Container(
-                color: Colors.grey[500],
+                color: Colors.grey.shade400,
                 height: .5,
               ),
               Expanded(

@@ -5,8 +5,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:gmail/Pages/MailPage.dart';
+import 'package:gmail/styles.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
+import '../DarkTheme.dart';
 import '../FAB/fabCollapsed.dart';
 import '../FAB/fabExtended.dart';
 import '../models/mail.dart';
@@ -41,8 +44,7 @@ class _HomePageState extends State<HomePage>
               content: "New Login to Cloud We noticed some unusual",
               date: "26 Jan 2020",
               subject: "Cloud Login",
-              senderName:
-                  "New Login to Cloud We noticed some unusual" + "Google",
+              senderName: "Google Cloud",
               senderMail: "google@google.com",
               time: "12:23 am",
               profile: link.toString(),
@@ -85,15 +87,18 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
+    final themeChange = Provider.of<DarkThemeProvider>(context);
+
     return Scaffold(
       key: _scaffoldKey,
+      backgroundColor:
+          Styles.themeData(themeChange.darkTheme, context).backgroundColor,
       floatingActionButton:
           isFAB ? buildCollapsedFAB(context) : buildExtendedFAB(context),
       drawer: Drawer(
         child: Container(
-          color: Colors.white,
+          color: Styles.themeData(themeChange.darkTheme, context).primaryColor,
           child: ListView(
-            // Important: Remove any padding from the ListView.
             padding: EdgeInsets.zero,
             children: <Widget>[
               Container(
@@ -121,7 +126,8 @@ class _HomePageState extends State<HomePage>
               Container(
                 height: 45,
                 margin: EdgeInsets.only(right: 10),
-                color: Colors.white,
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .primaryColor,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(100),
@@ -132,9 +138,12 @@ class _HomePageState extends State<HomePage>
                       elevation: 0,
                       primary: currentSelected == 1
                           ? Colors.red.shade100
-                          : Colors.white,
-                      onPrimary:
-                          currentSelected == 1 ? Colors.red : Colors.black,
+                          : Styles.themeData(themeChange.darkTheme, context)
+                              .primaryColor,
+                      onPrimary: currentSelected == 1
+                          ? Colors.red
+                          : Styles.themeData(themeChange.darkTheme, context)
+                              .secondaryHeaderColor,
                     ),
                     onPressed: () {
                       setState(() {
@@ -152,7 +161,9 @@ class _HomePageState extends State<HomePage>
                           style: TextStyle(
                               color: currentSelected == 1
                                   ? Colors.red
-                                  : Colors.black87,
+                                  : Styles.themeData(
+                                          themeChange.darkTheme, context)
+                                      .secondaryHeaderColor,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ProductSans'),
                         ),
@@ -165,7 +176,8 @@ class _HomePageState extends State<HomePage>
               Container(
                 height: 45,
                 margin: EdgeInsets.only(right: 10),
-                color: Colors.white,
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .primaryColor,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(100),
@@ -176,9 +188,12 @@ class _HomePageState extends State<HomePage>
                       elevation: 0,
                       primary: currentSelected == 2
                           ? Colors.red.shade100
-                          : Colors.white,
-                      onPrimary:
-                          currentSelected == 2 ? Colors.red : Colors.black,
+                          : Styles.themeData(themeChange.darkTheme, context)
+                              .primaryColor,
+                      onPrimary: currentSelected == 2
+                          ? Colors.red
+                          : Styles.themeData(themeChange.darkTheme, context)
+                              .secondaryHeaderColor,
                     ),
                     onPressed: () {
                       setState(() {
@@ -196,7 +211,9 @@ class _HomePageState extends State<HomePage>
                           style: TextStyle(
                               color: currentSelected == 2
                                   ? Colors.red
-                                  : Colors.black87,
+                                  : Styles.themeData(
+                                          themeChange.darkTheme, context)
+                                      .secondaryHeaderColor,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ProductSans'),
                         ),
@@ -208,7 +225,8 @@ class _HomePageState extends State<HomePage>
               Container(
                 height: 45,
                 margin: EdgeInsets.only(right: 10),
-                color: Colors.white,
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .primaryColor,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(100),
@@ -219,9 +237,12 @@ class _HomePageState extends State<HomePage>
                       elevation: 0,
                       primary: currentSelected == 3
                           ? Colors.blue.shade100
-                          : Colors.white,
-                      onPrimary:
-                          currentSelected == 3 ? Colors.blue : Colors.black,
+                          : Styles.themeData(themeChange.darkTheme, context)
+                              .primaryColor,
+                      onPrimary: currentSelected == 3
+                          ? Colors.blue
+                          : Styles.themeData(themeChange.darkTheme, context)
+                              .secondaryHeaderColor,
                     ),
                     onPressed: () {
                       setState(() {
@@ -239,7 +260,9 @@ class _HomePageState extends State<HomePage>
                           style: TextStyle(
                               color: currentSelected == 3
                                   ? Colors.blue
-                                  : Colors.black87,
+                                  : Styles.themeData(
+                                          themeChange.darkTheme, context)
+                                      .secondaryHeaderColor,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ProductSans'),
                         ),
@@ -251,7 +274,8 @@ class _HomePageState extends State<HomePage>
               Container(
                 height: 45,
                 margin: EdgeInsets.only(right: 10),
-                color: Colors.white,
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .primaryColor,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(100),
@@ -262,9 +286,12 @@ class _HomePageState extends State<HomePage>
                       elevation: 0,
                       primary: currentSelected == 4
                           ? Colors.green.shade100
-                          : Colors.white,
-                      onPrimary:
-                          currentSelected == 4 ? Colors.green : Colors.black,
+                          : Styles.themeData(themeChange.darkTheme, context)
+                              .primaryColor,
+                      onPrimary: currentSelected == 4
+                          ? Colors.green
+                          : Styles.themeData(themeChange.darkTheme, context)
+                              .secondaryHeaderColor,
                     ),
                     onPressed: () {
                       setState(() {
@@ -282,7 +309,9 @@ class _HomePageState extends State<HomePage>
                           style: TextStyle(
                               color: currentSelected == 4
                                   ? Colors.green
-                                  : Colors.black87,
+                                  : Styles.themeData(
+                                          themeChange.darkTheme, context)
+                                      .secondaryHeaderColor,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ProductSans'),
                         ),
@@ -297,7 +326,9 @@ class _HomePageState extends State<HomePage>
                   'ALL LABELS',
                   style: TextStyle(
                       fontSize: 12,
-                      color: Colors.black.withOpacity(.84),
+                      color: Styles.themeData(themeChange.darkTheme, context)
+                          .secondaryHeaderColor
+                          .withOpacity(.84),
                       fontWeight: FontWeight.w500,
                       fontFamily: 'ProductSans'),
                 ),
@@ -305,7 +336,8 @@ class _HomePageState extends State<HomePage>
               Container(
                 height: 45,
                 margin: EdgeInsets.only(right: 10),
-                color: Colors.white,
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .primaryColor,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(100),
@@ -316,8 +348,11 @@ class _HomePageState extends State<HomePage>
                       elevation: 0,
                       primary: currentSelected == 5
                           ? Colors.grey.shade300
-                          : Colors.white,
-                      onPrimary: Colors.black,
+                          : Styles.themeData(themeChange.darkTheme, context)
+                              .primaryColor,
+                      onPrimary:
+                          Styles.themeData(themeChange.darkTheme, context)
+                              .secondaryHeaderColor,
                     ),
                     onPressed: () {
                       setState(() {
@@ -333,7 +368,9 @@ class _HomePageState extends State<HomePage>
                         Text(
                           'Starred',
                           style: TextStyle(
-                              color: Colors.black87,
+                              color: Styles.themeData(
+                                      themeChange.darkTheme, context)
+                                  .secondaryHeaderColor,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ProductSans'),
                         ),
@@ -345,7 +382,8 @@ class _HomePageState extends State<HomePage>
               Container(
                 height: 45,
                 margin: EdgeInsets.only(right: 10),
-                color: Colors.white,
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .primaryColor,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(100),
@@ -356,8 +394,11 @@ class _HomePageState extends State<HomePage>
                       elevation: 0,
                       primary: currentSelected == 6
                           ? Colors.grey.shade300
-                          : Colors.white,
-                      onPrimary: Colors.black,
+                          : Styles.themeData(themeChange.darkTheme, context)
+                              .primaryColor,
+                      onPrimary:
+                          Styles.themeData(themeChange.darkTheme, context)
+                              .secondaryHeaderColor,
                     ),
                     onPressed: () {
                       setState(() {
@@ -373,7 +414,9 @@ class _HomePageState extends State<HomePage>
                         Text(
                           'Snoozed',
                           style: TextStyle(
-                              color: Colors.black87,
+                              color: Styles.themeData(
+                                      themeChange.darkTheme, context)
+                                  .secondaryHeaderColor,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ProductSans'),
                         ),
@@ -385,7 +428,8 @@ class _HomePageState extends State<HomePage>
               Container(
                 height: 45,
                 margin: EdgeInsets.only(right: 10),
-                color: Colors.white,
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .primaryColor,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(100),
@@ -396,8 +440,11 @@ class _HomePageState extends State<HomePage>
                       elevation: 0,
                       primary: currentSelected == 7
                           ? Colors.grey.shade300
-                          : Colors.white,
-                      onPrimary: Colors.black,
+                          : Styles.themeData(themeChange.darkTheme, context)
+                              .primaryColor,
+                      onPrimary:
+                          Styles.themeData(themeChange.darkTheme, context)
+                              .secondaryHeaderColor,
                     ),
                     onPressed: () {
                       setState(() {
@@ -413,7 +460,9 @@ class _HomePageState extends State<HomePage>
                         Text(
                           'Important',
                           style: TextStyle(
-                              color: Colors.black87,
+                              color: Styles.themeData(
+                                      themeChange.darkTheme, context)
+                                  .secondaryHeaderColor,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ProductSans'),
                         ),
@@ -425,7 +474,8 @@ class _HomePageState extends State<HomePage>
               Container(
                 height: 45,
                 margin: EdgeInsets.only(right: 10),
-                color: Colors.white,
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .primaryColor,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(100),
@@ -436,8 +486,11 @@ class _HomePageState extends State<HomePage>
                       elevation: 0,
                       primary: currentSelected == 8
                           ? Colors.grey.shade300
-                          : Colors.white,
-                      onPrimary: Colors.black,
+                          : Styles.themeData(themeChange.darkTheme, context)
+                              .primaryColor,
+                      onPrimary:
+                          Styles.themeData(themeChange.darkTheme, context)
+                              .secondaryHeaderColor,
                     ),
                     onPressed: () {
                       setState(() {
@@ -453,7 +506,9 @@ class _HomePageState extends State<HomePage>
                         Text(
                           'Sent',
                           style: TextStyle(
-                              color: Colors.black87,
+                              color: Styles.themeData(
+                                      themeChange.darkTheme, context)
+                                  .secondaryHeaderColor,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ProductSans'),
                         ),
@@ -465,7 +520,8 @@ class _HomePageState extends State<HomePage>
               Container(
                 height: 45,
                 margin: EdgeInsets.only(right: 10),
-                color: Colors.white,
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .primaryColor,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(100),
@@ -476,8 +532,11 @@ class _HomePageState extends State<HomePage>
                       elevation: 0,
                       primary: currentSelected == 9
                           ? Colors.grey.shade300
-                          : Colors.white,
-                      onPrimary: Colors.black,
+                          : Styles.themeData(themeChange.darkTheme, context)
+                              .primaryColor,
+                      onPrimary:
+                          Styles.themeData(themeChange.darkTheme, context)
+                              .secondaryHeaderColor,
                     ),
                     onPressed: () {
                       setState(() {
@@ -493,7 +552,9 @@ class _HomePageState extends State<HomePage>
                         Text(
                           'Scheduled',
                           style: TextStyle(
-                              color: Colors.black87,
+                              color: Styles.themeData(
+                                      themeChange.darkTheme, context)
+                                  .secondaryHeaderColor,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ProductSans'),
                         ),
@@ -505,7 +566,8 @@ class _HomePageState extends State<HomePage>
               Container(
                 height: 45,
                 margin: EdgeInsets.only(right: 10),
-                color: Colors.white,
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .primaryColor,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(100),
@@ -516,8 +578,11 @@ class _HomePageState extends State<HomePage>
                       elevation: 0,
                       primary: currentSelected == 10
                           ? Colors.grey.shade300
-                          : Colors.white,
-                      onPrimary: Colors.black,
+                          : Styles.themeData(themeChange.darkTheme, context)
+                              .primaryColor,
+                      onPrimary:
+                          Styles.themeData(themeChange.darkTheme, context)
+                              .secondaryHeaderColor,
                     ),
                     onPressed: () {
                       setState(() {
@@ -533,7 +598,9 @@ class _HomePageState extends State<HomePage>
                         Text(
                           'Outbox',
                           style: TextStyle(
-                              color: Colors.black87,
+                              color: Styles.themeData(
+                                      themeChange.darkTheme, context)
+                                  .secondaryHeaderColor,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ProductSans'),
                         ),
@@ -545,7 +612,8 @@ class _HomePageState extends State<HomePage>
               Container(
                 height: 45,
                 margin: EdgeInsets.only(right: 10),
-                color: Colors.white,
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .primaryColor,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(100),
@@ -556,8 +624,11 @@ class _HomePageState extends State<HomePage>
                       elevation: 0,
                       primary: currentSelected == 11
                           ? Colors.grey.shade300
-                          : Colors.white,
-                      onPrimary: Colors.black,
+                          : Styles.themeData(themeChange.darkTheme, context)
+                              .primaryColor,
+                      onPrimary:
+                          Styles.themeData(themeChange.darkTheme, context)
+                              .secondaryHeaderColor,
                     ),
                     onPressed: () {
                       setState(() {
@@ -573,7 +644,9 @@ class _HomePageState extends State<HomePage>
                         Text(
                           'Drafts',
                           style: TextStyle(
-                              color: Colors.black87,
+                              color: Styles.themeData(
+                                      themeChange.darkTheme, context)
+                                  .secondaryHeaderColor,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ProductSans'),
                         ),
@@ -585,7 +658,8 @@ class _HomePageState extends State<HomePage>
               Container(
                 height: 45,
                 margin: EdgeInsets.only(right: 10),
-                color: Colors.white,
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .primaryColor,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(100),
@@ -596,8 +670,11 @@ class _HomePageState extends State<HomePage>
                       elevation: 0,
                       primary: currentSelected == 12
                           ? Colors.grey.shade300
-                          : Colors.white,
-                      onPrimary: Colors.black,
+                          : Styles.themeData(themeChange.darkTheme, context)
+                              .primaryColor,
+                      onPrimary:
+                          Styles.themeData(themeChange.darkTheme, context)
+                              .secondaryHeaderColor,
                     ),
                     onPressed: () {
                       setState(() {
@@ -613,7 +690,9 @@ class _HomePageState extends State<HomePage>
                         Text(
                           'All mail',
                           style: TextStyle(
-                              color: Colors.black87,
+                              color: Styles.themeData(
+                                      themeChange.darkTheme, context)
+                                  .secondaryHeaderColor,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ProductSans'),
                         ),
@@ -625,7 +704,8 @@ class _HomePageState extends State<HomePage>
               Container(
                 height: 45,
                 margin: EdgeInsets.only(right: 10),
-                color: Colors.white,
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .primaryColor,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(100),
@@ -636,8 +716,11 @@ class _HomePageState extends State<HomePage>
                       elevation: 0,
                       primary: currentSelected == 13
                           ? Colors.grey.shade300
-                          : Colors.white,
-                      onPrimary: Colors.black,
+                          : Styles.themeData(themeChange.darkTheme, context)
+                              .primaryColor,
+                      onPrimary:
+                          Styles.themeData(themeChange.darkTheme, context)
+                              .secondaryHeaderColor,
                     ),
                     onPressed: () {
                       setState(() {
@@ -653,7 +736,9 @@ class _HomePageState extends State<HomePage>
                         Text(
                           'Spam',
                           style: TextStyle(
-                              color: Colors.black87,
+                              color: Styles.themeData(
+                                      themeChange.darkTheme, context)
+                                  .secondaryHeaderColor,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ProductSans'),
                         ),
@@ -665,7 +750,8 @@ class _HomePageState extends State<HomePage>
               Container(
                 height: 45,
                 margin: EdgeInsets.only(right: 10),
-                color: Colors.white,
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .primaryColor,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(100),
@@ -676,8 +762,11 @@ class _HomePageState extends State<HomePage>
                       elevation: 0,
                       primary: currentSelected == 14
                           ? Colors.grey.shade300
-                          : Colors.white,
-                      onPrimary: Colors.black,
+                          : Styles.themeData(themeChange.darkTheme, context)
+                              .primaryColor,
+                      onPrimary:
+                          Styles.themeData(themeChange.darkTheme, context)
+                              .secondaryHeaderColor,
                     ),
                     onPressed: () {
                       setState(() {
@@ -693,7 +782,9 @@ class _HomePageState extends State<HomePage>
                         Text(
                           'Bin',
                           style: TextStyle(
-                              color: Colors.black87,
+                              color: Styles.themeData(
+                                      themeChange.darkTheme, context)
+                                  .secondaryHeaderColor,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ProductSans'),
                         ),
@@ -708,7 +799,9 @@ class _HomePageState extends State<HomePage>
                   'GOOGLE APPS',
                   style: TextStyle(
                       fontSize: 12,
-                      color: Colors.black.withOpacity(.84),
+                      color: Styles.themeData(themeChange.darkTheme, context)
+                          .secondaryHeaderColor
+                          .withOpacity(.84),
                       fontWeight: FontWeight.w500,
                       fontFamily: 'ProductSans'),
                 ),
@@ -716,7 +809,8 @@ class _HomePageState extends State<HomePage>
               Container(
                 height: 45,
                 margin: EdgeInsets.only(right: 10),
-                color: Colors.white,
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .primaryColor,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(100),
@@ -727,8 +821,11 @@ class _HomePageState extends State<HomePage>
                       elevation: 0,
                       primary: currentSelected == 15
                           ? Colors.grey.shade300
-                          : Colors.white,
-                      onPrimary: Colors.black,
+                          : Styles.themeData(themeChange.darkTheme, context)
+                              .primaryColor,
+                      onPrimary:
+                          Styles.themeData(themeChange.darkTheme, context)
+                              .secondaryHeaderColor,
                     ),
                     onPressed: () {
                       setState(() {
@@ -744,7 +841,9 @@ class _HomePageState extends State<HomePage>
                         Text(
                           'Calendar',
                           style: TextStyle(
-                              color: Colors.black87,
+                              color: Styles.themeData(
+                                      themeChange.darkTheme, context)
+                                  .secondaryHeaderColor,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ProductSans'),
                         ),
@@ -756,7 +855,8 @@ class _HomePageState extends State<HomePage>
               Container(
                 height: 45,
                 margin: EdgeInsets.only(right: 10),
-                color: Colors.white,
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .primaryColor,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(100),
@@ -767,8 +867,11 @@ class _HomePageState extends State<HomePage>
                       elevation: 0,
                       primary: currentSelected == 16
                           ? Colors.grey.shade300
-                          : Colors.white,
-                      onPrimary: Colors.black,
+                          : Styles.themeData(themeChange.darkTheme, context)
+                              .primaryColor,
+                      onPrimary:
+                          Styles.themeData(themeChange.darkTheme, context)
+                              .secondaryHeaderColor,
                     ),
                     onPressed: () {
                       setState(() {
@@ -784,7 +887,9 @@ class _HomePageState extends State<HomePage>
                         Text(
                           'Contacts',
                           style: TextStyle(
-                              color: Colors.black87,
+                              color: Styles.themeData(
+                                      themeChange.darkTheme, context)
+                                  .secondaryHeaderColor,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ProductSans'),
                         ),
@@ -797,7 +902,8 @@ class _HomePageState extends State<HomePage>
               Container(
                 height: 45,
                 margin: EdgeInsets.only(right: 10),
-                color: Colors.white,
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .primaryColor,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(100),
@@ -808,8 +914,11 @@ class _HomePageState extends State<HomePage>
                       elevation: 0,
                       primary: currentSelected == 17
                           ? Colors.grey.shade300
-                          : Colors.white,
-                      onPrimary: Colors.black,
+                          : Styles.themeData(themeChange.darkTheme, context)
+                              .primaryColor,
+                      onPrimary:
+                          Styles.themeData(themeChange.darkTheme, context)
+                              .secondaryHeaderColor,
                     ),
                     onPressed: () {
                       setState(() {
@@ -825,7 +934,9 @@ class _HomePageState extends State<HomePage>
                         Text(
                           'Settings',
                           style: TextStyle(
-                              color: Colors.black87,
+                              color: Styles.themeData(
+                                      themeChange.darkTheme, context)
+                                  .secondaryHeaderColor,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ProductSans'),
                         ),
@@ -837,7 +948,8 @@ class _HomePageState extends State<HomePage>
               Container(
                 height: 45,
                 margin: EdgeInsets.only(right: 10),
-                color: Colors.white,
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .primaryColor,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(100),
@@ -848,8 +960,11 @@ class _HomePageState extends State<HomePage>
                       elevation: 0,
                       primary: currentSelected == 18
                           ? Colors.grey.shade300
-                          : Colors.white,
-                      onPrimary: Colors.black,
+                          : Styles.themeData(themeChange.darkTheme, context)
+                              .primaryColor,
+                      onPrimary:
+                          Styles.themeData(themeChange.darkTheme, context)
+                              .secondaryHeaderColor,
                     ),
                     onPressed: () {
                       setState(() {
@@ -865,7 +980,9 @@ class _HomePageState extends State<HomePage>
                         Text(
                           'Help and feedback',
                           style: TextStyle(
-                              color: Colors.black87,
+                              color: Styles.themeData(
+                                      themeChange.darkTheme, context)
+                                  .secondaryHeaderColor,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ProductSans'),
                         ),
@@ -874,12 +991,21 @@ class _HomePageState extends State<HomePage>
                   ),
                 ),
               ),
+              Checkbox(
+                  value: themeChange.darkTheme,
+                  onChanged: (bool? val) {
+                    setState(() {
+                      themeChange.darkTheme = val!;
+                    });
+                  })
             ],
           ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.red,
+        backgroundColor:
+            Styles.themeData(themeChange.darkTheme, context).bottomAppBarColor,
         items: [
           BottomNavigationBarItem(
             icon: Icon(
@@ -911,7 +1037,7 @@ class _HomePageState extends State<HomePage>
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.shade100,
+                      color: Colors.grey.shade400,
                       offset: Offset(0.0, 1.0), //(x,y)
                       blurRadius: 2.0,
                     ),
@@ -934,6 +1060,9 @@ class _HomePageState extends State<HomePage>
                               vertical: 8, horizontal: 10),
                           child: Icon(
                             Icons.menu,
+                            color:
+                                Styles.themeData(themeChange.darkTheme, context)
+                                    .accentColor,
                           ),
                         ),
                         onTap: () => _scaffoldKey.currentState!.openDrawer(),
@@ -958,7 +1087,8 @@ class _HomePageState extends State<HomePage>
               child: Text(
                 "PRIMARY",
                 style: TextStyle(
-                    color: Colors.black54,
+                    color: Styles.themeData(themeChange.darkTheme, context)
+                        .accentColor,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1,
                     fontSize: 13),
@@ -1014,7 +1144,9 @@ class _HomePageState extends State<HomePage>
                             child: Text(
                               mails[i].getDate().toString().substring(0, 6),
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color: Styles.themeData(
+                                          themeChange.darkTheme, context)
+                                      .secondaryHeaderColor,
                                   fontSize: 13,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -1032,7 +1164,9 @@ class _HomePageState extends State<HomePage>
                                 fontWeight: mails[i].read
                                     ? FontWeight.normal
                                     : FontWeight.bold,
-                                color: Colors.black),
+                                color: Styles.themeData(
+                                        themeChange.darkTheme, context)
+                                    .secondaryHeaderColor),
                           ),
                           Row(
                             mainAxisSize: MainAxisSize.min,
