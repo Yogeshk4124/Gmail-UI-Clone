@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:gmail/styles.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import '../DarkTheme.dart';
 
 class Compose extends StatefulWidget {
   @override
@@ -45,6 +49,8 @@ class _ComposeState extends State<Compose> {
 
   @override
   Widget build(BuildContext context) {
+    final themeChange = Provider.of<DarkThemeProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -52,7 +58,7 @@ class _ComposeState extends State<Compose> {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: Colors.black87,
+            color: Styles.themeData(themeChange.darkTheme, context).accentColor,
             size: 25,
           ),
           onPressed: () {
@@ -61,7 +67,10 @@ class _ComposeState extends State<Compose> {
         ),
         title: Text(
           "Compose",
-          style: GoogleFonts.poppins(color: Colors.black),
+          style: GoogleFonts.poppins(
+            color: Styles.themeData(themeChange.darkTheme, context)
+                .secondaryHeaderColor,
+          ),
         ),
         actions: [
           GestureDetector(
@@ -70,7 +79,8 @@ class _ComposeState extends State<Compose> {
               padding: EdgeInsets.only(left: 18),
               child: Icon(
                 Icons.attachment,
-                color: Colors.black.withOpacity(0.7),
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .accentColor,
                 size: 22,
               ),
             ),
@@ -81,7 +91,8 @@ class _ComposeState extends State<Compose> {
               padding: EdgeInsets.only(left: 18),
               child: Icon(
                 Icons.send,
-                color: Colors.black.withOpacity(0.7),
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .accentColor,
                 size: 22,
               ),
             ),
@@ -92,7 +103,8 @@ class _ComposeState extends State<Compose> {
               padding: EdgeInsets.only(left: 15, right: 10),
               child: Icon(
                 Icons.more_vert,
-                color: Colors.black.withOpacity(0.7),
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .accentColor,
                 size: 22,
               ),
             ),
@@ -113,8 +125,10 @@ class _ComposeState extends State<Compose> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
-                          color: Colors.black.withOpacity(0.6),
-                          fontSize: 17),
+                          color:
+                              Styles.themeData(themeChange.darkTheme, context)
+                                  .hintColor,
+                          fontSize: 18),
                     ),
                   ),
                   Expanded(
@@ -164,9 +178,11 @@ class _ComposeState extends State<Compose> {
                     child: Text(
                       "To",
                       style: TextStyle(
-                          color: Colors.black.withOpacity(0.6),
+                          color:
+                              Styles.themeData(themeChange.darkTheme, context)
+                                  .hintColor,
                           fontWeight: FontWeight.w400,
-                          fontSize: 17),
+                          fontSize: 18),
                     ),
                   ),
                   border: InputBorder.none,
@@ -187,7 +203,9 @@ class _ComposeState extends State<Compose> {
                         alignment: Alignment.centerRight,
                         child: Icon(
                           Icons.keyboard_arrow_down,
-                          color: Colors.black.withOpacity(0.6),
+                          color:
+                              Styles.themeData(themeChange.darkTheme, context)
+                                  .hintColor,
                         ),
                       ),
                     ),
@@ -214,9 +232,11 @@ class _ComposeState extends State<Compose> {
                       child: Text(
                         "Cc",
                         style: TextStyle(
-                            color: Colors.black.withOpacity(0.6),
+                            color:
+                                Styles.themeData(themeChange.darkTheme, context)
+                                    .hintColor,
                             fontWeight: FontWeight.w400,
-                            fontSize: 17),
+                            fontSize: 18),
                       ),
                     ),
                     border: InputBorder.none,
@@ -246,9 +266,11 @@ class _ComposeState extends State<Compose> {
                       child: Text(
                         "Bcc",
                         style: TextStyle(
-                            color: Colors.black.withOpacity(0.6),
+                            color:
+                                Styles.themeData(themeChange.darkTheme, context)
+                                    .hintColor,
                             fontWeight: FontWeight.w400,
-                            fontSize: 17),
+                            fontSize: 18),
                       ),
                     ),
                     border: InputBorder.none,

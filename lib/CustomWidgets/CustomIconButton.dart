@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../DarkTheme.dart';
+import '../styles.dart';
 
 class CustomIconButton extends StatelessWidget {
   String text;
@@ -9,6 +13,8 @@ class CustomIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeChange = Provider.of<DarkThemeProvider>(context);
+
     return GestureDetector(
       child: Container(
         margin: EdgeInsets.symmetric(horizontal: 5),
@@ -25,8 +31,16 @@ class CustomIconButton extends StatelessWidget {
             Icon(
               icon,
               size: 20,
+              color: Styles.themeData(themeChange.darkTheme, context)
+                  .secondaryHeaderColor,
             ),
-            Text(text),
+            Text(
+              text,
+              style: TextStyle(
+                color: Styles.themeData(themeChange.darkTheme, context)
+                    .secondaryHeaderColor,
+              ),
+            ),
           ],
         ),
       ),

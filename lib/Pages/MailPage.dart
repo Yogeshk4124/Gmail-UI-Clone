@@ -145,9 +145,19 @@ class _MailPageState extends State<MailPage>
                               Text(
                                 msg.subject.toString(),
                                 style: TextStyle(
-                                    fontSize: 24, fontWeight: FontWeight.w400),
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w400,
+                                  color: Styles.themeData(
+                                          themeChange.darkTheme, context)
+                                      .secondaryHeaderColor,
+                                ),
                               ),
-                              Icon(Icons.star_outline),
+                              Icon(
+                                Icons.star_outline,
+                                color: Styles.themeData(
+                                        themeChange.darkTheme, context)
+                                    .secondaryHeaderColor,
+                              ),
                             ],
                           ),
                           SizedBox(
@@ -189,6 +199,10 @@ class _MailPageState extends State<MailPage>
                                             msg.senderName.toString(),
                                             overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
+                                                color: Styles.themeData(
+                                                        themeChange.darkTheme,
+                                                        context)
+                                                    .secondaryHeaderColor,
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 16),
                                           ),
@@ -200,6 +214,12 @@ class _MailPageState extends State<MailPage>
                                                 .getDate()
                                                 .toString()
                                                 .substring(0, 6),
+                                            style: TextStyle(
+                                              color: Styles.themeData(
+                                                      themeChange.darkTheme,
+                                                      context)
+                                                  .secondaryHeaderColor,
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -280,9 +300,18 @@ class _MailPageState extends State<MailPage>
                                   flex: 2,
                                   child: Icon(
                                     CupertinoIcons.arrow_turn_up_left,
-                                    color: Colors.grey.shade900,
+                                    color: Styles.themeData(
+                                            themeChange.darkTheme, context)
+                                        .secondaryHeaderColor,
                                   )),
-                              Expanded(flex: 2, child: Icon(Icons.more_vert)),
+                              Expanded(
+                                  flex: 2,
+                                  child: Icon(
+                                    Icons.more_vert,
+                                    color: Styles.themeData(
+                                            themeChange.darkTheme, context)
+                                        .secondaryHeaderColor,
+                                  )),
                             ],
                           ),
                           Visibility(

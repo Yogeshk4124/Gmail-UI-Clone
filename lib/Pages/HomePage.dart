@@ -30,7 +30,8 @@ class _HomePageState extends State<HomePage>
   ScrollController _scrollController = new ScrollController();
   bool isFAB = false;
   int currentSelected = 1;
-
+  IconData themeIcon = Icons.light_mode_sharp;
+  // Color themeIconBG=
   void fetchImage() async {
     var response =
         await http.get(Uri.parse('https://randomuser.me/api/?results=10'));
@@ -104,7 +105,7 @@ class _HomePageState extends State<HomePage>
               Container(
                 margin: EdgeInsets.all(0.0),
                 padding: EdgeInsets.all(0.0),
-                height: 90,
+                height: 120,
                 child: DrawerHeader(
                   decoration: BoxDecoration(
                       color: Colors.transparent,
@@ -112,14 +113,54 @@ class _HomePageState extends State<HomePage>
                       border: Border(
                           bottom: BorderSide(
                               color: Colors.grey.shade500, width: .2))),
-                  child: Text(
-                    'Gmail',
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 22,
-                      fontWeight: FontWeight.normal,
-                      fontFamily: 'ProductSans',
-                    ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Gmail',
+                        style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 22,
+                          fontWeight: FontWeight.normal,
+                          fontFamily: 'ProductSans',
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          // Checkbox(
+                          //     value: themeChange.darkTheme,
+                          //     onChanged: (bool? val) {
+                          //       setState(() {
+                          //         themeChange.darkTheme = val!;
+                          //       });
+                          //     })
+                          if (themeIcon == Icons.light_mode_sharp) {
+                            setState(() {
+                              themeChange.darkTheme = false;
+                              themeIcon = Icons.mode_night;
+                            });
+                          } else {
+                            setState(() {
+                              themeChange.darkTheme = true;
+                              themeIcon = Icons.light_mode_sharp;
+                            });
+                          }
+                        },
+                        child: CircleAvatar(
+                          radius: 20,
+                          backgroundColor:
+                              Styles.themeData(themeChange.darkTheme, context)
+                                  .indicatorColor,
+                          child: Icon(
+                            themeIcon,
+                            size: 20,
+                            color:
+                                Styles.themeData(themeChange.darkTheme, context)
+                                    .secondaryHeaderColor,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -991,13 +1032,6 @@ class _HomePageState extends State<HomePage>
                   ),
                 ),
               ),
-              Checkbox(
-                  value: themeChange.darkTheme,
-                  onChanged: (bool? val) {
-                    setState(() {
-                      themeChange.darkTheme = val!;
-                    });
-                  })
             ],
           ),
         ),
@@ -1068,14 +1102,22 @@ class _HomePageState extends State<HomePage>
                         onTap: () => _scaffoldKey.currentState!.openDrawer(),
                       ),
                       Expanded(
-                        child: Text("Search in emails"),
+                        child: Text(
+                          "Search in emails",
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                        ),
                       ),
                       Padding(
                           padding: const EdgeInsets.symmetric(
                               vertical: 8, horizontal: 10),
                           child: CircleAvatar(
                             radius: 14,
-                            child: Text("S"),
+                            child: Text(
+                              "S",
+                              style: TextStyle(color: Colors.white),
+                            ),
                           )),
                     ],
                   ),
@@ -1088,7 +1130,7 @@ class _HomePageState extends State<HomePage>
                 "PRIMARY",
                 style: TextStyle(
                     color: Styles.themeData(themeChange.darkTheme, context)
-                        .accentColor,
+                        .highlightColor,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1,
                     fontSize: 13),
@@ -1132,6 +1174,9 @@ class _HomePageState extends State<HomePage>
                             child: Text(
                               mails[i].getUsername().toString(),
                               style: TextStyle(
+                                color: Styles.themeData(
+                                        themeChange.darkTheme, context)
+                                    .secondaryHeaderColor,
                                 fontWeight: mails[i].read
                                     ? FontWeight.normal
                                     : FontWeight.bold,
@@ -1179,7 +1224,12 @@ class _HomePageState extends State<HomePage>
                                       .toString()
                                       .replaceAll("\n", " "),
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(fontSize: 14),
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Styles.themeData(
+                                            themeChange.darkTheme, context)
+                                        .secondaryHeaderColor,
+                                  ),
                                 ),
                               ),
                               Icon(
