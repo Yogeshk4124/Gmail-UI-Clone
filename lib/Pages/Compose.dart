@@ -52,6 +52,8 @@ class _ComposeState extends State<Compose> {
     final themeChange = Provider.of<DarkThemeProvider>(context);
 
     return Scaffold(
+      backgroundColor:
+          Styles.themeData(themeChange.darkTheme, context).primaryColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -135,18 +137,33 @@ class _ComposeState extends State<Compose> {
                     child: DropdownButton<String>(
                       value: selected,
                       isExpanded: true,
+                      dropdownColor:
+                          Styles.themeData(themeChange.darkTheme, context)
+                              .accentColor,
                       underline: Container(
                         width: 0,
                         height: 0,
                       ),
-                      icon: Icon(Icons.keyboard_arrow_down),
+                      icon: Icon(
+                        Icons.keyboard_arrow_down,
+                        color: Styles.themeData(themeChange.darkTheme, context)
+                            .hintColor,
+                      ),
                       items: option.map(
                         (e) {
                           return DropdownMenuItem<String>(
                             value: e,
                             child: SizedBox(
                               width: MediaQuery.of(context).size.width,
-                              child: Text('$e', textAlign: TextAlign.start),
+                              child: Text(
+                                '$e',
+                                textAlign: TextAlign.start,
+                                style: TextStyle(
+                                  color: Styles.themeData(
+                                          themeChange.darkTheme, context)
+                                      .secondaryHeaderColor,
+                                ),
+                              ),
                             ),
                           );
                         },

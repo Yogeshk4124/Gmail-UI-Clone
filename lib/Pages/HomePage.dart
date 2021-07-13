@@ -125,38 +125,42 @@ class _HomePageState extends State<HomePage>
                           fontFamily: 'ProductSans',
                         ),
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          // Checkbox(
-                          //     value: themeChange.darkTheme,
-                          //     onChanged: (bool? val) {
-                          //       setState(() {
-                          //         themeChange.darkTheme = val!;
-                          //       });
-                          //     })
-                          if (themeIcon == Icons.light_mode_sharp) {
-                            setState(() {
-                              themeChange.darkTheme = false;
-                              themeIcon = Icons.mode_night;
-                            });
-                          } else {
-                            setState(() {
-                              themeChange.darkTheme = true;
-                              themeIcon = Icons.light_mode_sharp;
-                            });
-                          }
-                        },
-                        child: CircleAvatar(
-                          radius: 20,
-                          backgroundColor:
-                              Styles.themeData(themeChange.darkTheme, context)
-                                  .indicatorColor,
-                          child: Icon(
-                            themeIcon,
-                            size: 20,
-                            color:
+                      AnimatedContainer(
+                        duration: Duration(seconds: 200),
+                        curve: Curves.linear,
+                        child: GestureDetector(
+                          onTap: () {
+                            // Checkbox(
+                            //     value: themeChange.darkTheme,
+                            //     onChanged: (bool? val) {
+                            //       setState(() {
+                            //         themeChange.darkTheme = val!;
+                            //       });
+                            //     })
+                            if (themeIcon == Icons.light_mode_sharp) {
+                              setState(() {
+                                themeChange.darkTheme = true;
+                                themeIcon = Icons.mode_night;
+                              });
+                            } else {
+                              setState(() {
+                                themeChange.darkTheme = false;
+                                themeIcon = Icons.light_mode_sharp;
+                              });
+                            }
+                          },
+                          child: CircleAvatar(
+                            radius: 20,
+                            backgroundColor:
                                 Styles.themeData(themeChange.darkTheme, context)
-                                    .secondaryHeaderColor,
+                                    .indicatorColor,
+                            child: Icon(
+                              themeIcon,
+                              size: 20,
+                              color: Styles.themeData(
+                                      themeChange.darkTheme, context)
+                                  .secondaryHeaderColor,
+                            ),
                           ),
                         ),
                       ),
@@ -178,7 +182,7 @@ class _HomePageState extends State<HomePage>
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
                       primary: currentSelected == 1
-                          ? Colors.red.shade100
+                          ? Colors.red.shade50
                           : Styles.themeData(themeChange.darkTheme, context)
                               .primaryColor,
                       onPrimary: currentSelected == 1
@@ -205,7 +209,7 @@ class _HomePageState extends State<HomePage>
                                   : Styles.themeData(
                                           themeChange.darkTheme, context)
                                       .secondaryHeaderColor,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                               fontFamily: 'ProductSans'),
                         ),
                       ],
@@ -228,7 +232,7 @@ class _HomePageState extends State<HomePage>
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
                       primary: currentSelected == 2
-                          ? Colors.red.shade100
+                          ? Colors.red.shade50
                           : Styles.themeData(themeChange.darkTheme, context)
                               .primaryColor,
                       onPrimary: currentSelected == 2
@@ -255,7 +259,7 @@ class _HomePageState extends State<HomePage>
                                   : Styles.themeData(
                                           themeChange.darkTheme, context)
                                       .secondaryHeaderColor,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                               fontFamily: 'ProductSans'),
                         ),
                       ],
@@ -277,7 +281,7 @@ class _HomePageState extends State<HomePage>
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
                       primary: currentSelected == 3
-                          ? Colors.blue.shade100
+                          ? Colors.blue.shade50
                           : Styles.themeData(themeChange.darkTheme, context)
                               .primaryColor,
                       onPrimary: currentSelected == 3
@@ -304,7 +308,7 @@ class _HomePageState extends State<HomePage>
                                   : Styles.themeData(
                                           themeChange.darkTheme, context)
                                       .secondaryHeaderColor,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                               fontFamily: 'ProductSans'),
                         ),
                       ],
@@ -326,7 +330,7 @@ class _HomePageState extends State<HomePage>
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
                       primary: currentSelected == 4
-                          ? Colors.green.shade100
+                          ? Colors.green.shade50
                           : Styles.themeData(themeChange.darkTheme, context)
                               .primaryColor,
                       onPrimary: currentSelected == 4
@@ -353,7 +357,7 @@ class _HomePageState extends State<HomePage>
                                   : Styles.themeData(
                                           themeChange.darkTheme, context)
                                       .secondaryHeaderColor,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                               fontFamily: 'ProductSans'),
                         ),
                       ],
@@ -412,7 +416,7 @@ class _HomePageState extends State<HomePage>
                               color: Styles.themeData(
                                       themeChange.darkTheme, context)
                                   .secondaryHeaderColor,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                               fontFamily: 'ProductSans'),
                         ),
                       ],
@@ -458,7 +462,7 @@ class _HomePageState extends State<HomePage>
                               color: Styles.themeData(
                                       themeChange.darkTheme, context)
                                   .secondaryHeaderColor,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                               fontFamily: 'ProductSans'),
                         ),
                       ],
@@ -504,7 +508,7 @@ class _HomePageState extends State<HomePage>
                               color: Styles.themeData(
                                       themeChange.darkTheme, context)
                                   .secondaryHeaderColor,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                               fontFamily: 'ProductSans'),
                         ),
                       ],
@@ -550,7 +554,7 @@ class _HomePageState extends State<HomePage>
                               color: Styles.themeData(
                                       themeChange.darkTheme, context)
                                   .secondaryHeaderColor,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                               fontFamily: 'ProductSans'),
                         ),
                       ],
@@ -596,7 +600,7 @@ class _HomePageState extends State<HomePage>
                               color: Styles.themeData(
                                       themeChange.darkTheme, context)
                                   .secondaryHeaderColor,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                               fontFamily: 'ProductSans'),
                         ),
                       ],
@@ -642,7 +646,7 @@ class _HomePageState extends State<HomePage>
                               color: Styles.themeData(
                                       themeChange.darkTheme, context)
                                   .secondaryHeaderColor,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                               fontFamily: 'ProductSans'),
                         ),
                       ],
@@ -688,7 +692,7 @@ class _HomePageState extends State<HomePage>
                               color: Styles.themeData(
                                       themeChange.darkTheme, context)
                                   .secondaryHeaderColor,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                               fontFamily: 'ProductSans'),
                         ),
                       ],
@@ -734,7 +738,7 @@ class _HomePageState extends State<HomePage>
                               color: Styles.themeData(
                                       themeChange.darkTheme, context)
                                   .secondaryHeaderColor,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                               fontFamily: 'ProductSans'),
                         ),
                       ],
@@ -780,7 +784,7 @@ class _HomePageState extends State<HomePage>
                               color: Styles.themeData(
                                       themeChange.darkTheme, context)
                                   .secondaryHeaderColor,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                               fontFamily: 'ProductSans'),
                         ),
                       ],
@@ -826,7 +830,7 @@ class _HomePageState extends State<HomePage>
                               color: Styles.themeData(
                                       themeChange.darkTheme, context)
                                   .secondaryHeaderColor,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                               fontFamily: 'ProductSans'),
                         ),
                       ],
@@ -885,7 +889,7 @@ class _HomePageState extends State<HomePage>
                               color: Styles.themeData(
                                       themeChange.darkTheme, context)
                                   .secondaryHeaderColor,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                               fontFamily: 'ProductSans'),
                         ),
                       ],
@@ -931,7 +935,7 @@ class _HomePageState extends State<HomePage>
                               color: Styles.themeData(
                                       themeChange.darkTheme, context)
                                   .secondaryHeaderColor,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                               fontFamily: 'ProductSans'),
                         ),
                       ],
@@ -978,7 +982,7 @@ class _HomePageState extends State<HomePage>
                               color: Styles.themeData(
                                       themeChange.darkTheme, context)
                                   .secondaryHeaderColor,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                               fontFamily: 'ProductSans'),
                         ),
                       ],
@@ -1024,7 +1028,7 @@ class _HomePageState extends State<HomePage>
                               color: Styles.themeData(
                                       themeChange.darkTheme, context)
                                   .secondaryHeaderColor,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                               fontFamily: 'ProductSans'),
                         ),
                       ],
@@ -1037,7 +1041,7 @@ class _HomePageState extends State<HomePage>
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.red,
+        selectedItemColor: Colors.red.shade500,
         backgroundColor:
             Styles.themeData(themeChange.darkTheme, context).bottomAppBarColor,
         items: [
@@ -1046,14 +1050,29 @@ class _HomePageState extends State<HomePage>
               Icons.mail,
               size: 25,
             ),
-            label: "Mail",
+            // label: "Mail",
+            title: Text(
+              "Mail",
+              style: TextStyle(
+                color:
+                    Styles.themeData(themeChange.darkTheme, context).hintColor,
+              ),
+            ),
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.videocam_outlined,
               size: 25,
+              color: Styles.themeData(themeChange.darkTheme, context).hintColor,
             ),
-            label: "Meet",
+            title: Text(
+              "Meet",
+              style: TextStyle(
+                color:
+                    Styles.themeData(themeChange.darkTheme, context).hintColor,
+              ),
+            ),
+            // label: "Meet",
           ),
         ],
       ),
@@ -1130,7 +1149,7 @@ class _HomePageState extends State<HomePage>
                 "PRIMARY",
                 style: TextStyle(
                     color: Styles.themeData(themeChange.darkTheme, context)
-                        .highlightColor,
+                        .splashColor,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1,
                     fontSize: 13),
@@ -1281,6 +1300,39 @@ class _HomePageState extends State<HomePage>
 
 class DataSearch extends SearchDelegate<String> {
   var arr = ["1", "2", "3", "4", "5"];
+  var themeChange;
+
+  @override
+  ThemeData appBarTheme(BuildContext context) {
+    themeChange = Provider.of<DarkThemeProvider>(context);
+    return Theme.of(context).copyWith(
+        scaffoldBackgroundColor:
+            Styles.themeData(themeChange.darkTheme, context).bottomAppBarColor,
+        backgroundColor:
+            Styles.themeData(themeChange.darkTheme, context).accentColor,
+        primaryColorDark: Colors.red,
+//            Styles.themeData(themeChange.darkTheme, context).accentColor,
+        focusColor: Colors.red,
+        inputDecorationTheme: InputDecorationTheme(
+          border: InputBorder.none,
+          focusedBorder: InputBorder.none,
+          enabledBorder: InputBorder.none,
+          errorBorder: InputBorder.none,
+          disabledBorder: InputBorder.none,
+        ),
+        textTheme: TextTheme(
+          title: TextStyle(
+            color: Styles.themeData(themeChange.darkTheme, context)
+                .secondaryHeaderColor,
+          ),
+          body1: TextStyle(
+            color: Styles.themeData(themeChange.darkTheme, context)
+                .secondaryHeaderColor,
+          ),
+        ),
+        bottomSheetTheme: BottomSheetThemeData(
+            backgroundColor: Colors.red, modalBackgroundColor: Colors.pink));
+  }
 
   @override
   List<Widget> buildActions(BuildContext context) {
@@ -1323,8 +1375,18 @@ class DataSearch extends SearchDelegate<String> {
         : arr.where((element) => element.startsWith(query)).toList();
     return ListView.builder(
       itemBuilder: (context, index) => ListTile(
-        leading: Icon(Icons.location_city),
-        title: Text(suggestionList[index].toString()),
+        leading: Icon(
+          Icons.restore,
+          color: Styles.themeData(themeChange.darkTheme, context)
+              .secondaryHeaderColor,
+        ),
+        title: Text(
+          suggestionList[index].toString(),
+          style: TextStyle(
+            color: Styles.themeData(themeChange.darkTheme, context)
+                .secondaryHeaderColor,
+          ),
+        ),
       ),
       itemCount: suggestionList.length,
     );

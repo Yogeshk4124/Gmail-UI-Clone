@@ -7,18 +7,20 @@ class Styles {
     return ThemeData(
       primarySwatch: Colors.red,
       primaryColor: isDarkTheme ? Color(0xff222222) : Colors.white,
-      accentColor: isDarkTheme ? Colors.grey.shade800 : Colors.grey.shade800,
-      highlightColor: isDarkTheme ? Colors.grey.shade100 : Colors.grey.shade800,
+      accentColor: Colors.grey.shade800,
+      highlightColor: isDarkTheme ? Colors.grey : Colors.red.shade100,
       secondaryHeaderColor: isDarkTheme ? Colors.white : Colors.black,
       textSelectionColor: isDarkTheme ? Colors.white : Colors.black,
       indicatorColor: isDarkTheme ? Color(0xff303030) : Colors.grey.shade100,
       backgroundColor: isDarkTheme ? Color(0xff181818) : Colors.white,
-      buttonColor: isDarkTheme ? Color(0xff3B3B3B) : Color(0xffF1F5FB),
+      buttonColor: isDarkTheme ? Color(0xff3B3B3B) : Colors.white,
       bottomAppBarColor: isDarkTheme ? Color(0xff222222) : Colors.white,
-      hintColor: isDarkTheme ? Colors.grey : Colors.grey,
+      errorColor: isDarkTheme ? Colors.grey.shade700 : Colors.red.shade800,
+      hintColor: isDarkTheme ? Colors.grey : Colors.black87,
       appBarTheme: AppBarTheme(
         elevation: 0.0,
       ),
+      splashColor: isDarkTheme ? Colors.grey.shade100 : Colors.grey.shade800,
     );
   }
 }

@@ -63,11 +63,11 @@ class _MailPageState extends State<MailPage>
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        leading: IconButton(
-          onPressed: () {
+        leading: GestureDetector(
+          onTap: () {
             Navigator.pop(context);
           },
-          icon: Icon(
+          child: Icon(
             Icons.arrow_back,
             color: Styles.themeData(themeChange.darkTheme, context).accentColor,
           ),
