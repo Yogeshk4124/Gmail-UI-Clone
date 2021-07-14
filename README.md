@@ -10,19 +10,11 @@ Gmail Application UI Clone in Flutter
 
 ### Dark mode
 
-<img src="./screenshots/Screenshot4.png" height="500em" /> 
-<img src="./screenshots/Screenshot2.png" height="500em" /> 
-<img src="./screenshots/Screenshot9.png" height="500em" /> 
-<img src="./screenshots/Screenshot1.png" height="500em" />
-<img src="./screenshots/Screenshot3.png" height="500em" />
+<img src="./screenshots/Screenshot4.png" height="500em" /> <img src="./screenshots/Screenshot2.png" height="500em" /> <img src="./screenshots/Screenshot9.png" height="500em" /> <img src="./screenshots/Screenshot1.png" height="500em" /> <img src="./screenshots/Screenshot3.png" height="500em" />
 
 ### Light mode
 
-<img src="./screenshots/Screenshot5.png" height="500em" /> 
-<img src="./screenshots/Screenshot6.png" height="500em" />
-<img src="./screenshots/Screenshot10.png" height="500em" /> 
-<img src="./screenshots/Screenshot7.png" height="500em" /> 
-<img src="./screenshots/Screenshot8.png" height="500em" />
+<img src="./screenshots/Screenshot5.png" height="500em" /> <img src="./screenshots/Screenshot6.png" height="500em" /> <img src="./screenshots/Screenshot10.png" height="500em" /> <img src="./screenshots/Screenshot7.png" height="500em" /> <img src="./screenshots/Screenshot8.png" height="500em" />
 
 ## Project setup
 
