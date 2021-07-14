@@ -1,18 +1,58 @@
 # Gmail UI Clone
 
-About the project
+Gmail Application UI Clone in Flutter
 
-## Some Features
+## APK
 
-- Feature 0
-- Feature 1
-- Feature 2
+[⬇️ Download apk here](https://github.com/Yogeshk4124/Gmail-ui-clone/blob/main/apk/app.apk?raw=true)
 
-# Screenshots
+## Screenshots
 
-https://mockuphone.com/device/google-pixel4-clearlywhite
+### Dark mode
 
-https://mockuphone.com/device/macbookgrey
+<img src="./screenshots/Screenshot4.png" height="500em" /> 
+<img src="./screenshots/Screenshot2.png" height="500em" /> 
+<img src="./screenshots/Screenshot9.png" height="500em" /> 
+<img src="./screenshots/Screenshot1.png" height="500em" />
+<img src="./screenshots/Screenshot3.png" height="500em" />
+
+### Light mode
+
+<img src="./screenshots/Screenshot5.png" height="500em" /> 
+<img src="./screenshots/Screenshot6.png" height="500em" />
+<img src="./screenshots/Screenshot10.png" height="500em" /> 
+<img src="./screenshots/Screenshot7.png" height="500em" /> 
+<img src="./screenshots/Screenshot8.png" height="500em" />
+
+## Project setup
+
+**Step 1:**
+Download or clone this repo by using the link below:
+
+```
+https://github.com/Yogeshk4124/Card-Space.git
+```
+
+**Step 2:**
+Go to project root and execute the following command in console to get the required dependencies:
+
+```
+flutter pub get
+```
+
+**Step 3:**
+Run the project in Android Studio or any IDE you prefer or run the command:
+
+```
+flutter run <DART_FILE> or Run the project in android studio
+```
+
+**Step 4:**
+To build the flutter project:
+
+```
+flutter build
+```
 
 ## Pull Requests
 
@@ -22,7 +62,7 @@ I welcome and encourage all pull requests. Here are some basic rules to follow t
 2. If its a feature, bug fix, or anything please only change code to what you specify.
 3. Please keep PR titles easy to read and descriptive of changes, this will make them easier to merge :)
 4. Pull requests _must_ be made against `develop` branch. Any other branch (unless specified by the maintainers) will get rejected.
-5. Check for existing [issues](https://github.com/Shreyans13/Web-Template/issues) first, before filing an issue.
+5. Check for existing [issues](https://github.com/Yogeshk4124/Gmail-ui-clone/issues) first, before filing an issue.
 6. Make sure you follow the set standard as all other projects in this repo do
 7. Have fun!<br>
 
@@ -36,8 +76,8 @@ I welcome and encourage all pull requests. Here are some basic rules to follow t
 
 ### Show some :heart: and star the repository to support the project
 
-For more contact me @[Gmail](mailto::shreyans1313@gmail.com),
+For more contact me @[Gmail](mailto::yogeshk4124@gmail.com),
 
 ## Facing Any Problem or need any Help:grey_question:
 
-Incase you need any problem or need any help write me in [issues](https://github.com/Shreyans13/Web-Template/issues) section.
+In case you face any problem or need any help write me in [issues](https://github.com/Yogeshk4124/Gmail-ui-clone/issues) section.
