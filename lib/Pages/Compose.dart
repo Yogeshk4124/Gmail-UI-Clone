@@ -187,6 +187,8 @@ class _ComposeState extends State<Compose> {
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 18,
+                  color: Styles.themeData(themeChange.darkTheme, context)
+                      .secondaryHeaderColor,
                 ),
                 decoration: InputDecoration(
                   prefixIcon: Container(
@@ -204,9 +206,6 @@ class _ComposeState extends State<Compose> {
                   ),
                   border: InputBorder.none,
                   suffixIcon: Visibility(
-                    maintainSize: true,
-                    maintainAnimation: true,
-                    maintainState: true,
                     visible: !isVisible,
                     child: GestureDetector(
                       onTap: () {
@@ -239,9 +238,10 @@ class _ComposeState extends State<Compose> {
                   textAlignVertical: TextAlignVertical.top,
                   controller: ccController,
                   style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 18,
-                  ),
+                      fontWeight: FontWeight.w400,
+                      fontSize: 18,
+                      color: Styles.themeData(themeChange.darkTheme, context)
+                          .secondaryHeaderColor),
                   decoration: InputDecoration(
                     prefixIcon: Container(
                       width: 1,
@@ -273,9 +273,10 @@ class _ComposeState extends State<Compose> {
                   textAlignVertical: TextAlignVertical.top,
                   controller: bccController,
                   style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 18,
-                  ),
+                      fontWeight: FontWeight.w400,
+                      fontSize: 18,
+                      color: Styles.themeData(themeChange.darkTheme, context)
+                          .secondaryHeaderColor),
                   decoration: InputDecoration(
                     prefixIcon: Container(
                       width: 1,
@@ -305,9 +306,10 @@ class _ComposeState extends State<Compose> {
                 textAlignVertical: TextAlignVertical.top,
                 controller: subjectController,
                 style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 18,
-                ),
+                    fontWeight: FontWeight.w400,
+                    fontSize: 18,
+                    color: Styles.themeData(themeChange.darkTheme, context)
+                        .secondaryHeaderColor),
                 decoration: InputDecoration(
                     border: InputBorder.none, hintText: "Subject"),
               ),
@@ -322,9 +324,11 @@ class _ComposeState extends State<Compose> {
                   controller: msgController,
                   expands: true,
                   style: TextStyle(
-                    fontSize: 18,
-                  ),
-                  decoration: InputDecoration(hintText: "Compose email"),
+                      fontSize: 18,
+                      color: Styles.themeData(themeChange.darkTheme, context)
+                          .secondaryHeaderColor),
+                  decoration: InputDecoration(
+                      border: InputBorder.none, hintText: "Compose email"),
                 ),
               ),
             ],

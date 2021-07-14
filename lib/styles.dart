@@ -7,7 +7,7 @@ class Styles {
     return ThemeData(
       primarySwatch: Colors.red,
       primaryColor: isDarkTheme ? Color(0xff222222) : Colors.white,
-      accentColor: Colors.grey.shade800,
+      accentColor: isDarkTheme ? Colors.grey.shade500 : Colors.grey.shade800,
       highlightColor: isDarkTheme ? Colors.grey : Colors.red.shade100,
       secondaryHeaderColor: isDarkTheme ? Colors.white : Colors.black,
       textSelectionColor: isDarkTheme ? Colors.white : Colors.black,

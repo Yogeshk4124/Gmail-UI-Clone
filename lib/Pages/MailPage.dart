@@ -142,14 +142,16 @@ class _MailPageState extends State<MailPage>
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                msg.subject.toString(),
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  fontWeight: FontWeight.w400,
-                                  color: Styles.themeData(
-                                          themeChange.darkTheme, context)
-                                      .secondaryHeaderColor,
+                              Expanded(
+                                child: Text(
+                                  msg.subject.toString(),
+                                  style: TextStyle(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.w400,
+                                    color: Styles.themeData(
+                                            themeChange.darkTheme, context)
+                                        .secondaryHeaderColor,
+                                  ),
                                 ),
                               ),
                               Icon(

@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +11,7 @@ import 'package:provider/provider.dart';
 import '../DarkTheme.dart';
 import '../FAB/fabCollapsed.dart';
 import '../FAB/fabExtended.dart';
+import '../data.dart';
 import '../models/mail.dart';
 
 class HomePage extends StatefulWidget {
@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage>
   bool isFAB = false;
   int currentSelected = 1;
   IconData themeIcon = Icons.light_mode_sharp;
-  // Color themeIconBG=
+  dummyData data = new dummyData();
   void fetchImage() async {
     var response =
         await http.get(Uri.parse('https://randomuser.me/api/?results=10'));
@@ -42,15 +42,15 @@ class _HomePageState extends State<HomePage>
         link = json['results'][i]['picture']['large'];
         mails.add(
           new mail(
-              content: "New Login to Cloud We noticed some unusual",
+              content: data.content[i],
               date: "26 Jan 2020",
-              subject: "Cloud Login",
-              senderName: "Google Cloud",
-              senderMail: "google@google.com",
+              subject: data.subject[i],
+              senderName: data.names[i],
+              senderMail: data.emails[i],
               time: "12:23 am",
               profile: link.toString(),
               receiverMails: ["mymail@gmail.com"],
-              read: Random().nextInt(2) == 1 ? true : false),
+              read: data.read[i]),
         );
       }
     } catch (e) {
@@ -1042,6 +1042,8 @@ class _HomePageState extends State<HomePage>
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.red.shade500,
+        unselectedItemColor: Styles.themeData(themeChange.darkTheme, context)
+            .secondaryHeaderColor,
         backgroundColor:
             Styles.themeData(themeChange.darkTheme, context).bottomAppBarColor,
         items: [
@@ -1050,14 +1052,14 @@ class _HomePageState extends State<HomePage>
               Icons.mail,
               size: 25,
             ),
-            // label: "Mail",
-            title: Text(
-              "Mail",
-              style: TextStyle(
-                color:
-                    Styles.themeData(themeChange.darkTheme, context).hintColor,
-              ),
-            ),
+            label: "Mail",
+            // title: Text(
+            //   "Mail",
+            //   style: TextStyle(
+            //     color:
+            //         Styles.themeData(themeChange.darkTheme, context).hintColor,
+            //   ),
+            // ),
           ),
           BottomNavigationBarItem(
             icon: Icon(
@@ -1065,13 +1067,14 @@ class _HomePageState extends State<HomePage>
               size: 25,
               color: Styles.themeData(themeChange.darkTheme, context).hintColor,
             ),
-            title: Text(
-              "Meet",
-              style: TextStyle(
-                color:
-                    Styles.themeData(themeChange.darkTheme, context).hintColor,
-              ),
-            ),
+            label: "Meet",
+            // title: Text(
+            //   "Meet",
+            //   style: TextStyle(
+            //     color:
+            //         Styles.themeData(themeChange.darkTheme, context).hintColor,
+            //   ),
+            // ),
             // label: "Meet",
           ),
         ],
@@ -1299,9 +1302,15 @@ class _HomePageState extends State<HomePage>
 }
 
 class DataSearch extends SearchDelegate<String> {
-  var arr = ["1", "2", "3", "4", "5"];
+  var arr = [
+    "Yogesh Kumar",
+    "Flutter Developer",
+    "Software Engineer",
+    "@Odessa",
+    "Gmail-UI"
+  ];
   var themeChange;
-
+  var result = [];
   @override
   ThemeData appBarTheme(BuildContext context) {
     themeChange = Provider.of<DarkThemeProvider>(context);
@@ -1362,12 +1371,6 @@ class DataSearch extends SearchDelegate<String> {
   }
 
   @override
-  Widget buildResults(BuildContext context) {
-    // TODO: implement buildResults
-    throw UnimplementedError();
-  }
-
-  @override
   Widget buildSuggestions(BuildContext context) {
     // TODO: implement buildSuggestions
     final suggestionList = query.isEmpty
@@ -1390,5 +1393,11 @@ class DataSearch extends SearchDelegate<String> {
       ),
       itemCount: suggestionList.length,
     );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    // TODO: implement buildResults
+    throw UnimplementedError();
   }
 }
