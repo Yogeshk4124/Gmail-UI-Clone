@@ -43,9 +43,9 @@ class dummyData {
     true,
     false,
     false,
-    true,
-    true,
     false,
+    true,
+    true,
     false,
     false,
     false
@@ -72,5 +72,17 @@ class dummyData {
     7. Have fun!''',
     '''Facing Any Problem or need any Help❔In case you face any problem or need any help write me in issues section or create a pull request.''',
     '''You can find me at\n\nLinkedin - yogeshk4124\nGithub - Yogeshk4124\nGmail - yogeshk4124@gmail.com''',
+  ];
+  List<String> link = [
+    'https://avatars.githubusercontent.com/u/55343959?v=4',
+    'https://raw.githubusercontent.com/github/explore/549f36e938c7a2323fee1a465e812c7a69128979/topics/flutter/flutter.png',
+    'https://technical.ly/wp-content/uploads/2019/01/Odessa-O-Logo-2.png',
+    'https://randomuser.me/api/portraits/lego/0.jpg',
+    'https://camo.githubusercontent.com/111bdd8ac34df2daf609f9392aea420ff9d3af3956cdddffd123ee4cf195e0cf/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f3830333333363836393834343335333032362f3836303938353538393138303030363431302f756e6b6e6f776e2e706e67',
+    'https://github.com/Yogeshk4124/SyncPlayer/blob/main/assets/launcher/icon.png?raw=true',
+    'https://cdn.iconscout.com/icon/free/png-256/translate-10-616199.png',
+    'https://cdn.iconscout.com/icon/free/png-512/contribute-puzzle-predictive-modeling-problem-solution-2-5245.png',
+    'https://icon-library.com/images/problem-icon/problem-icon-13.jpg',
+    'https://www.vhv.rs/dpng/d/417-4172108_transparent-contact-icons-png-email-icon-teal-png.png',
   ];
 }

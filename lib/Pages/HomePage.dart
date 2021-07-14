@@ -1,11 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:gmail/Pages/MailPage.dart';
 import 'package:gmail/styles.dart';
-import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
 import '../DarkTheme.dart';
@@ -32,39 +29,26 @@ class _HomePageState extends State<HomePage>
   int currentSelected = 1;
   IconData themeIcon = Icons.light_mode_sharp;
   dummyData data = new dummyData();
-  void fetchImage() async {
-    var response =
-        await http.get(Uri.parse('https://randomuser.me/api/?results=10'));
-    try {
-      var json = jsonDecode(response.body);
-      var link;
-      for (int i = 0; i < 10; i++) {
-        link = json['results'][i]['picture']['large'];
-        mails.add(
-          new mail(
-              content: data.content[i],
-              date: "26 Jan 2020",
-              subject: data.subject[i],
-              senderName: data.names[i],
-              senderMail: data.emails[i],
-              time: "12:23 am",
-              profile: link.toString(),
-              receiverMails: ["mymail@gmail.com"],
-              read: data.read[i]),
-        );
-      }
-    } catch (e) {
-      print("error " + ":" + e.toString());
-    }
-    setState(() {});
-  }
 
   @override
   void initState() {
     super.initState();
     _animationController =
         AnimationController(duration: Duration(milliseconds: 450), vsync: this);
-    fetchImage();
+    for (int i = 0; i < 10; i++) {
+      mails.add(
+        new mail(
+            content: data.content[i],
+            date: "26 Jan 2020",
+            subject: data.subject[i],
+            senderName: data.names[i],
+            senderMail: data.emails[i],
+            time: "12:23 am",
+            profile: data.link[i],
+            receiverMails: ["mymail@gmail.com"],
+            read: data.read[i]),
+      );
+    }
     _scrollController.addListener(() {
       if (_scrollController.offset > 50) {
         setState(() {
@@ -1186,6 +1170,7 @@ class _HomePageState extends State<HomePage>
                         backgroundImage:
                             NetworkImage(mails[i].profile.toString()),
                         foregroundColor: Colors.white,
+                        backgroundColor: Colors.white,
                         radius: 20,
                       ),
                       title: Row(

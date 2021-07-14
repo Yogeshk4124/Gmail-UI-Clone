@@ -38,7 +38,7 @@ class _MyAppState extends State<MyApp> {
       child: Consumer<DarkThemeProvider>(
         builder: (BuildContext context, value, Widget? child) {
           return MaterialApp(
-            title: 'Flutter Demo',
+            title: 'Gmail UI Clone',
             // theme: ThemeData(
             //     primarySwatch: Colors.blue, fontFamily: 'ProductSans'),
             debugShowCheckedModeBanner: false,
