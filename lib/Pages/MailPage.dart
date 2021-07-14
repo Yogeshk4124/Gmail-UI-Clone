@@ -335,14 +335,27 @@ class _MailPageState extends State<MailPage>
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      Expanded(flex: 1, child: Text("From:")),
+                                      Expanded(
+                                          flex: 1,
+                                          child: Text(
+                                            "From:",
+                                            style: TextStyle(
+                                                color: Styles.themeData(
+                                                        themeChange.darkTheme,
+                                                        context)
+                                                    .secondaryHeaderColor),
+                                          )),
                                       Expanded(
                                         flex: 2,
                                         child: Text(
                                           msg.senderName.toString(),
                                           overflow: TextOverflow.ellipsis,
                                           style: TextStyle(
-                                              fontWeight: FontWeight.w500),
+                                              fontWeight: FontWeight.w500,
+                                              color: Styles.themeData(
+                                                      themeChange.darkTheme,
+                                                      context)
+                                                  .secondaryHeaderColor),
                                         ),
                                       ),
                                       Container(
@@ -356,8 +369,14 @@ class _MailPageState extends State<MailPage>
                                       ),
                                       Expanded(
                                           flex: 4,
-                                          child:
-                                              Text(msg.senderMail.toString())),
+                                          child: Text(
+                                            msg.senderMail.toString(),
+                                            style: TextStyle(
+                                                color: Styles.themeData(
+                                                        themeChange.darkTheme,
+                                                        context)
+                                                    .secondaryHeaderColor),
+                                          )),
                                       // Text()
                                     ],
                                   ),
@@ -369,7 +388,16 @@ class _MailPageState extends State<MailPage>
                                         CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      Expanded(flex: 1, child: Text("To:")),
+                                      Expanded(
+                                          flex: 1,
+                                          child: Text(
+                                            "To:",
+                                            style: TextStyle(
+                                                color: Styles.themeData(
+                                                        themeChange.darkTheme,
+                                                        context)
+                                                    .secondaryHeaderColor),
+                                          )),
                                       Expanded(
                                         flex: 6,
                                         child: Column(
@@ -377,7 +405,15 @@ class _MailPageState extends State<MailPage>
                                               CrossAxisAlignment.start,
                                           children: [
                                             for (var i in msg.receiverMails!)
-                                              Text(i)
+                                              Text(
+                                                i,
+                                                style: TextStyle(
+                                                    color: Styles.themeData(
+                                                            themeChange
+                                                                .darkTheme,
+                                                            context)
+                                                        .secondaryHeaderColor),
+                                              )
                                           ],
                                         ),
                                       ),
@@ -394,12 +430,28 @@ class _MailPageState extends State<MailPage>
                                         CrossAxisAlignment.start,
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
-                                      Expanded(flex: 1, child: Text("Date:")),
+                                      Expanded(
+                                          flex: 1,
+                                          child: Text(
+                                            "Date:",
+                                            style: TextStyle(
+                                                color: Styles.themeData(
+                                                        themeChange.darkTheme,
+                                                        context)
+                                                    .secondaryHeaderColor),
+                                          )),
                                       Expanded(
                                         flex: 6,
-                                        child: Text(msg.date.toString() +
-                                            ", " +
-                                            msg.time.toString()),
+                                        child: Text(
+                                          msg.date.toString() +
+                                              ", " +
+                                              msg.time.toString(),
+                                          style: TextStyle(
+                                              color: Styles.themeData(
+                                                      themeChange.darkTheme,
+                                                      context)
+                                                  .secondaryHeaderColor),
+                                        ),
                                       ),
                                       SizedBox(
                                         width: 14,
@@ -415,9 +467,11 @@ class _MailPageState extends State<MailPage>
                                         flex: 1,
                                         child: Container(
                                           alignment: Alignment.centerLeft,
-                                          child: Icon(
-                                            Icons.lock_outline,
-                                          ),
+                                          child: Icon(Icons.lock_outline,
+                                              color: Styles.themeData(
+                                                      themeChange.darkTheme,
+                                                      context)
+                                                  .secondaryHeaderColor),
                                         ),
                                       ),
                                       Expanded(
@@ -426,8 +480,22 @@ class _MailPageState extends State<MailPage>
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Text('Standard encryption(TLS).'),
-                                            Text('See security details.'),
+                                            Text(
+                                              'Standard encryption(TLS).',
+                                              style: TextStyle(
+                                                  color: Styles.themeData(
+                                                          themeChange.darkTheme,
+                                                          context)
+                                                      .secondaryHeaderColor),
+                                            ),
+                                            Text(
+                                              'See security details.',
+                                              style: TextStyle(
+                                                  color: Styles.themeData(
+                                                          themeChange.darkTheme,
+                                                          context)
+                                                      .secondaryHeaderColor),
+                                            ),
                                           ],
                                         ),
                                       ),

@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage>
   ScrollController _scrollController = new ScrollController();
   bool isFAB = false;
   int currentSelected = 1;
-  IconData themeIcon = Icons.mode_night;
+  IconData themeIcon = Icons.light_mode_sharp;
   //DarkThemeProvider().darkThemePreference.getTheme() ==
   //           DarkThemeProvider().darkTheme
   //       ? Icons.mode_night
