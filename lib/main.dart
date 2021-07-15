@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gmail/SplashScreen.dart';
 import 'package:gmail/styles.dart';
 import 'package:provider/provider.dart';
 
@@ -46,7 +47,8 @@ class _MyAppState extends State<MyApp> {
             theme: Styles.themeData(themeChangeProvider.darkTheme, context),
             initialRoute: '/',
             routes: {
-              '/': (context) => HomePage(),
+              '/': (context) => SplashScreen(),
+              '/HomePage': (context) => HomePage(),
               '/compose': (context) => Compose(),
               MailPage.routeName: (context) => MailPage(),
             },
