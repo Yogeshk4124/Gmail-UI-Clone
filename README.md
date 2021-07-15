@@ -2,6 +2,10 @@
 
 Gmail Application UI Clone in Flutter
 
+<p align="center">
+<img src="./screenshots/App.gif" height="500em"/>
+</p
+
 ## APK
 
 [⬇️ Download apk here](https://github.com/Yogeshk4124/Gmail-ui-clone/blob/main/apk/app.apk?raw=true)
